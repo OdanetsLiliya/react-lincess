@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Login from '../login';
+import DefaultButton from '../../../../components/defaultButton';
 import MenuToggle from "../menuToogle";
 
 import './styles.scss';
@@ -24,7 +24,7 @@ export default function MobileNavLinks(props) {
                    <div className="link" href="#">Link 4</div>
                 </div>
                 <div className="marginer" />
-                <Login />
+                <DefaultButton title="Login"/>
                 <div className="marginer" />
             </div>)}
         </div>

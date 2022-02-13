@@ -8,7 +8,7 @@ import './styles.scss';
 import Logo from './components/logo';
 import NavLinks from './components/navLinks';
 import MobileNavLinks from './components/mobileNavLinks';
-import LoginButton from './components/login';
+import DefaultButton from '../../components/defaultButton';
 
 export default function NavBar(props) {
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
@@ -22,7 +22,7 @@ export default function NavBar(props) {
                 {!isMobile && <NavLinks />}
             </div>
             <div className="rightSection">
-                {!isMobile && <LoginButton />}
+                {!isMobile && <DefaultButton title="Login"/>}
                 {isMobile && <MobileNavLinks />}
             </div>
         </div>

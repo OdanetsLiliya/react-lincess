@@ -1,8 +1,8 @@
-.loginContainer {
+.buttonContainer {
     display: flex;
 }
 
-.loginButton {
+.button {
     border: 0;
     outline: 0;
     padding: 8px 1em;
@@ -11,13 +11,25 @@
     font-weight: 600;
     border-radius: 15px;
     background-color: #F47D4A;
-    // background-image: linear-gradient(to right, transparent 0%, #46211A 100%);
     &:hover {
         background-color: #c5663e;
-        // color: #F47D4A;
     }
     font-family: "Gill Sans", sans-serif;
     color: #fff;
     font-weight: 500;
     font-size: 16px;
+}
+
+.darkButton {
+    background-color: darkgrey;
+    &:hover {
+        background-color: black;
+    }
+}
+
+.darkActiveButton {
+    background-color: black;
+    &:hover {
+        background-color: black;
+    }
 }
