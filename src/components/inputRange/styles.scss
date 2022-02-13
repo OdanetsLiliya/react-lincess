@@ -1,0 +1,44 @@
+.range {
+    position: relative;
+    background-color: transparent;
+    height: 4px;
+    &:hover{
+        height: 6px;
+    }
+    width: 100%;
+}
+
+.active_progress {
+    border-radius: 4px;
+    background-color: darkgray;
+    height: 100%;
+}
+
+.active_progress_point {
+    position: absolute;
+    background-color: white;
+    width: 14px;
+    height: 14px;
+    border-radius: 7px;
+    top: -5px;
+}
+
+.progressBar {
+    background-color: grey;
+    width: 100%;
+    height: 100%;
+  }
+
+input {
+    height: 4px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    top:0px;
+    left:0px;
+    right:0px;
+    opacity: 0;
+    z-index: 99;
+    cursor: pointer;
+}
