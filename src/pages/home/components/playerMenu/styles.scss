@@ -1,0 +1,23 @@
+
+ 
+  .playerMenu {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+
+  @keyframes FadeAnimation {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+  .animate {
+    animation: FadeAnimation 3s ease-in .1s forwards;
+  }
