@@ -1,0 +1,41 @@
+.detailsContainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+  margin-right: 16px;
+  animation-name: contentAnimationInit;
+  animation-duration: 0.2s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.details {
+  text-align: start;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  font-family: "Gill Sans", sans-serif;
+  text-align: start;
+  font-weight: 400;
+  font-size: 18px;
+  color: white;
+  font-family: "Gill Sans", sans-serif;
+  overflow: scroll;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+}
+
+.buttonWatch {
+  margin-top: 8px;
+}
+
+@keyframes contentAnimationInit {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

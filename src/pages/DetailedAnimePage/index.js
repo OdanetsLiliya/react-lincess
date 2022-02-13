@@ -3,18 +3,23 @@ import './styles.scss'
 import classNames from "classnames";
 
 import DefaultButton from '../../components/defaultButton';
+import About from './components/About';
+import Details from './components/Details';
 
 const DetailedAnimePage = () => {
   const menuInfo = [{
     title: "Об аниме",
+    value: "about_anime",
     isActive: true
   },
   {
-    title: "Список арок и эпизодов",
+    title: "Арки и эпизоды",
+    value: "episodes",
     isActive: false
   },
   {
     title: "Детали",
+    value: "details",
     isActive: false
   }
   ];
@@ -37,8 +42,10 @@ const DetailedAnimePage = () => {
     <div
       className={classNames("animeInfoContainer", {
         darkBackground: INITIAL_ACTIVE_KEY !== menuActiveKey,
+        detailsSelected: menuInfo[menuActiveKey].value === 'details'
       })}
     >
+     
       <div
         className={classNames("titleMenu", {
           animateTitleMenu: INITIAL_ACTIVE_KEY !== menuActiveKey,
@@ -54,14 +61,8 @@ const DetailedAnimePage = () => {
           {renderMenu()}
         </div>
         </div>
-        { INITIAL_ACTIVE_KEY === menuActiveKey && <div className="descriptionContainer">
-          <div className="description">
-            Познакомьтесь с Наруто Узумаки – юным ниндзя, которому предстоит пройти долгий путь к своей мечте. Однако для достижения любой цели нужны верные товарищи, которых Наруто предстоит обрести. Эта история о том, как найти в себе силы не сдаваться, когда никто вокруг не верит в успех. А ещё это исключительная и неповторимая в своём роде классика – самое занимательное приключение ниндзя всех времён!
-          </div>
-          <div className="buttonWatch">
-            <DefaultButton title="Смотреть" />
-          </div>
-        </div> }
+        <About isAvailiable={INITIAL_ACTIVE_KEY === menuActiveKey}/>
+        <Details isAvailiable={menuInfo[menuActiveKey].value === 'details'}/>
     </div>
   );
 }
