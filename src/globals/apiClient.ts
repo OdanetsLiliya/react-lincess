@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiClient = (token) => {
+const apiClient = (token : string) => {
     const instance = axios.create()
     instance.interceptors.request.use(async (request) => {
         if (token && request.headers) {

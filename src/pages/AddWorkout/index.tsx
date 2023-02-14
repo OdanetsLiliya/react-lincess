@@ -2,8 +2,7 @@ import React from 'react';
 
 import EditAddWorkout from '../../components/editAddWorkout';
 
-const AddWorkoutPage = () => {
-
+const AddWorkoutPage: React.FC = () => {
     return (
         <EditAddWorkout />
     )

@@ -132,7 +132,7 @@ const EditAddWorkout = ({
     console.log(formData)
 
     return (
-        <div className='editAddWorkoutContainer'>
+        <div className={`${isEdit ? 'editWorkoutContainer' : '' } editAddWorkoutContainer`}>
             <div className={`${isEdit ? 'editWorkoutForm' : 'addWorkoutForm'}`}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={`${isEdit ? '' : 'addWorkoutFormInputs'}`}>
