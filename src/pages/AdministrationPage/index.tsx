@@ -5,7 +5,7 @@ import DefaultButton from '../../components/defaultButton';
 
 import './styles.scss';
 
-const AdministrationPage = () => {
+const AdministrationPage: React.FC = () => {
     const history = useNavigate();
 
     return <div className='administrationContainer'>

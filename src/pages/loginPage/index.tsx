@@ -21,7 +21,7 @@ import { objectValidationShema } from './constants';
 
 import './styles.scss';
 
-const LoginPage = () => {
+const LoginPage: React.FC = () => {
     const { register, handleSubmit, formState: { isValid, errors } } = useForm({
       resolver: yupResolver(objectValidationShema),
       mode: 'onChange'

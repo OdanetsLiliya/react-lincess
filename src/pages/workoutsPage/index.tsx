@@ -6,7 +6,7 @@ import './styles.scss';
 
 import Workouts from '../../components/Workouts';
 
-const WorkoutsPage = () => {
+const WorkoutsPage: React.FC = () => {
     const params = useParams();
 
     const dispatch = useDispatch();

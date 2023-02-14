@@ -6,7 +6,6 @@ import { useSelector } from 'react-redux';
 import PlayerPage from '../../pages/playerPage';
 import CoachesList from '../../pages/coachesList';
 import DetailedCoachPage from '../../pages/detailedCoachPage';
-import SartTest from '../../pages/startPage';
 import LoginPage from '../../pages/loginPage';
 import WorkoutsPage from '../../pages/workoutsPage';
 import EditWorkoutPage from '../../pages/editWorkout';
@@ -44,10 +43,6 @@ const Routing: React.FC<RoutingType> = ({ isNavbarRendering }) => {
     {
       path: '/detailed-coach/:id',
       Component: DetailedCoachPage
-    },
-    {
-      path: '/dashboard-start',
-      Component: SartTest
     },
     {
       path: '/workouts',
