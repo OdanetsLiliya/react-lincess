@@ -52,7 +52,7 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
   const convertCheckBoxFilterToQuery = (queryName: string, filters: DictType) => {
     let queryToAdd = '';
     if (Object.keys(filters).length) {
-      Object.keys(filters).map((key) => {
+      Object.keys(filters).forEach((key) => {
         const filter = filters[key];
         if (filter) {
           queryToAdd += `&${queryName}=${key}`
