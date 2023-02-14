@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootStateType } from '../../stores';
 
 import { DictType } from '../../types/dictTypes';
+import { Workout } from '../../types/workoutTypes';
 
 import { workoutActions } from '../../globals/workouts/actions';
 import { filterActions } from '../../globals/filtersData/actions';
@@ -14,7 +15,6 @@ import WorkoutsFilter from '../WorkoutsFilter';
 import Pagination from '../pagination';
 
 import './styles.scss';
-
 export interface WorkoutsPropsType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   isAvailiable: boolean;
@@ -33,8 +33,6 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
   const [equipmentFilters, setEquipmentFilters] = useState<DictType>(selectedFilters.equipments);
   const [levelFilters, setLevelFilters] = useState<DictType>(selectedFilters.levels);
   const [page, setPage] = useState(selectedFilters.page || 0);
-
-  console.log(workoutTypeFilters, equipmentFilters, levelFilters)
 
   const onFiltersUpdate = () => {
     dispatch(filterActions.selectFilters({
@@ -111,11 +109,15 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
       />
       <div className='workoutsScroll'>
         <div className="workoutsListCards">
-          {workouts?.items.map((data, idx) => (
+          {workouts?.items.map((data: Workout, idx: number) => (
             <WorkoutCard
               workout={data}
               key={idx}
-              onClick={() => onSelectWorkout(data.id)}
+              onClick={() => {
+                if(data.id) {
+                  onSelectWorkout(data.id)
+                }
+              }}
               onFiltersUpdate={onFiltersUpdate}
               isEdit={user?.role === 'admin'}
             />

@@ -1,6 +1,5 @@
 .workoutsContainer {
   grid-row: 1;
-  // margin-top: 32px;
   width: 100%;
   align-content: start;
   margin-bottom: 32px;
@@ -12,8 +11,6 @@
 }
 
 .workoutsScroll {
-  // height: calc(100vh - 60px - 64px - 36px - 60px);
-  // height: 100%;
   margin-top: 32px;
   margin-left: 16px;
   display: flex;
@@ -29,15 +26,14 @@
   overflow-y: scroll;
 }
 
-/* @media (max-width: 910px) {
-    .workoutsListCards {
-      grid-template-columns: repeat(auto-fill, 250px);
-    }
+
+// TO DO: add filters for mobile version
+@media (max-width: 650px) {
+  .workoutsContainer {
+    grid-template-areas: "center";
+    grid-template-columns: 1fr;
+  }
+  .workoutsContainer .workoutsFilter {
+    display: none;
+  }
 }
-  
-  
-@media (max-width: 830px) {
-    .workoutsListCards {
-      grid-template-columns: repeat(auto-fill, calc(100vw - 48px));
-    }
-} */
