@@ -10,7 +10,7 @@
 
 .active_progress {
     border-radius: 4px;
-    background-color: darkgray;
+    background-color: var(--lilac);
     height: 100%;
 }
 
@@ -21,15 +21,16 @@
     height: 14px;
     border-radius: 7px;
     top: -5px;
+    z-index: 88;
 }
 
 .progressBar {
-    background-color: grey;
+    background-color: #474545;
     width: 100%;
     height: 100%;
   }
 
-input {
+.rangeInput {
     height: 4px;
     width: 100%;
     margin: 0px;
@@ -38,7 +39,55 @@ input {
     top:0px;
     left:0px;
     right:0px;
-    opacity: 0;
+    background: transparent;
     z-index: 99;
     cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
+
+input[type=range]::-webkit-slider-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 14px;
+    background: var(--lilac);
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    margin-left: -1px;
+}
+
+progress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 2px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0
+  }
+  
+  progress::-webkit-progress-bar {
+    background-color: #474545;
+  }
+  
+  progress::-webkit-progress-value {
+    background: var(--lilac);
+  }
+  
+  progress::-moz-progress-bar {
+    border: 1px solid var(--lilac);
+    background: var(--lilac);
+  }
+
+  progress::-webkit-progress-value::after {
+    content: '80%';
+    color: aqua;
+    position: absolute;
+    right: 0;
+    top: -125%;
+  }

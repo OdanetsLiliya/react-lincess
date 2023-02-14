@@ -1,0 +1,33 @@
+.permissionsDeniedContainer {
+    height: calc(100vh - 60px);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.permissionsDeniedCard {
+    background-color: var(--gray);
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.permissionsDeniedTitle {
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white);
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.permissionsDeniedDescr {
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}

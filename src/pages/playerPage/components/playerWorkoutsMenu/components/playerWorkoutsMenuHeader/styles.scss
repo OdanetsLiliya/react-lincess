@@ -1,0 +1,29 @@
+.workoutMenuHeader {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--gray);
+    justify-content: space-between;
+    align-items: center;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    padding: 0px 16px;
+    height: 64px;
+}
+
+.workoutHeaderTitle {
+    color: white;
+    font-size: 24px;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 600;
+}
+
+.workoutHeaderButton {
+    background-color: var(--light-gray);
+    color: var(--white);
+    font-weight: 400;
+    padding: 6px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: "Gill Sans", sans-serif;
+    cursor: pointer;
+}

@@ -1,6 +1,5 @@
 .navLinksContainer {
     height: 100%;
-    // box-shadow: 0 1px 3px rgba(186, 85, 54, 0.95);
     display: flex;
     align-items: center;
 }
@@ -17,21 +16,36 @@
     height: 100%;
     padding: 0 1.1em;
     font-family: "Gill Sans", sans-serif;
-    color: #fff;
+    color: var(--white);
     font-weight: 500;
-    font-size: 16px;
+    font-size: 18px;
     align-items: center;
     justify-content: center;
     display: flex;
     border-top: 2px solid transparent;
     transition: all 200ms ease-in-out;
     &:hover {
-        border-top: 2px solid #46211A;
+        border-top: 2px solid var(--lilac);
+        color: var(--lilac);
     }
+    cursor: pointer;
 }
 
 .link {
     text-decoration: none;
     color: inherit;
     font-size: inherit;
+}
+
+a.activeLink {
+    text-decoration: none;
+}
+
+a.unactiveLink {
+    text-decoration: none;
+}
+
+a.activeLink .linkItem {
+    border-top: 2px solid var(--lilac);
+    color: var(--lilac);
 }

@@ -1,0 +1,43 @@
+.workoutsContainer {
+  grid-row: 1;
+  // margin-top: 32px;
+  width: 100%;
+  align-content: start;
+  margin-bottom: 32px;
+  display: grid;
+  grid-template-areas: "left right right";
+  grid-template-columns: 250px 1fr 32px;
+  grid-template-rows: 1fr;
+  height: 100%;
+}
+
+.workoutsScroll {
+  // height: calc(100vh - 60px - 64px - 36px - 60px);
+  // height: 100%;
+  margin-top: 32px;
+  margin-left: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: scroll;
+}
+.workoutsListCards {
+  min-width: calc(100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  overflow-y: scroll;
+}
+
+/* @media (max-width: 910px) {
+    .workoutsListCards {
+      grid-template-columns: repeat(auto-fill, 250px);
+    }
+}
+  
+  
+@media (max-width: 830px) {
+    .workoutsListCards {
+      grid-template-columns: repeat(auto-fill, calc(100vw - 48px));
+    }
+} */

@@ -1,0 +1,120 @@
+.inputWrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.centerAlignInput {
+	align-items: center;
+}
+
+.inputItem {
+	position: relative;
+	width: 100%;
+}
+
+.inputIcon {
+	height: 30px;
+	width: 30px;
+	padding: 4px;
+	position: absolute;
+	box-sizing: border-box;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	cursor: pointer;
+}
+
+.inputWithIcon {
+	height: 42px;
+	box-sizing: border-box;
+	padding-right: 36px;
+	padding-left: 10px;
+	width: 100%;
+	background-color: var(--gray);
+	border: none;
+	font-family: "Gill Sans", sans-serif;
+	font-size: 13px;
+	border-radius: 5px;
+	overflow: hidden;
+	white-space: nowrap;
+	display: inline-block;
+	text-overflow: ellipsis;
+	color: var(--white);
+}
+
+.inputWithIcon:-webkit-autofill,
+.inputWithIcon:-webkit-autofill:hover, 
+.inputWithIcon:-webkit-autofill:focus, 
+.inputWithIcon:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--gray) inset !important;
+	box-shadow: 0 0 0 30px var(--gray) inset !important;
+	-webkit-text-fill-color: var(--white) !important;
+}
+
+
+.textAreaWithIcon {
+	padding: 9px 16px;
+	width: 100%;
+	background-color: var(--gray);
+	border: none;
+	font-family: "Gill Sans", sans-serif;
+	line-height: 26px;
+	font-size: 13px;
+	border-radius: 5px;
+	box-sizing: border-box;
+	&::placeholder {
+	  color: var(--white);
+	}
+	resize: none;
+}
+
+input:focus {
+	outline: none !important;
+	box-shadow: none !important;
+	// border: 2px solid #008F8F !important;
+}
+
+textarea:focus {
+	outline: none !important;
+	box-shadow: none !important;
+	border: 2px solid #008F8F !important;
+	overflow: auto !important;
+}
+
+.notVisible {
+	display: none;
+}
+
+.inputWithIconTitle {
+	font-family: "Gill Sans", sans-serif;
+    font-size: 14px;
+	color: var(--white);
+	line-height: 26px;
+	margin-top: 10px;
+	font-weight: 500;
+	text-shadow: -2px 2px 19px var(--gray-shadow);
+	text-align: left;
+}
+
+.inpuErrorTitle {
+	font-family: "Gill Sans", sans-serif;
+    font-size: 14px;
+	color: var(--error);
+	text-align: right;
+	// to fix input jumps
+	height: 14px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

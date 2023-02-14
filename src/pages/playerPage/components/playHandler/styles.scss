@@ -1,0 +1,25 @@
+
+  .controlsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    bottom: 50%;
+    top: 40%;
+  }
+  
+  .controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    margin: auto;
+  }
+
+  .playControlsIcon {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }

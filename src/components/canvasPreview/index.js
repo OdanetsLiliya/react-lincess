@@ -18,13 +18,11 @@ const CanvasPreview = ({
   useEffect(() => {
     if (videoRef && spriteRef) {
       const videoDuration = videoRef.current.duration;
-      console.log({ kekkekekekekke: videoRef.current })
       var vid = document.getElementById("video1");
-      console.log(vid.duration)
-      console.log(videoDuration)
-      console.log(videoRef, spriteRef)
-      setVideoTime(videoRef.current.duration);
+      if (!isNaN(videoDuration)) {
+      setVideoTime(videoRef.current.duration || videoDuration);
       loadSprites()
+      }
 
     }
   }, [videoRef, spriteRef]);
@@ -43,7 +41,7 @@ const CanvasPreview = ({
 
       widthOfAllSprites = this.width;
       gNOF = widthOfAllSprites / canvas.width;						//number of frames (in sprites file)
-      console.log(tempThumbsImages.src + " loaded:  " + this.width + 'x' + this.height + " with num-frames=" + gNOF);
+      // console.log(tempThumbsImages.src + " loaded:  " + this.width + 'x' + this.height + " with num-frames=" + gNOF);
 
       // Create sprite
       let tempTheSpriteItems = sprite({
@@ -57,7 +55,7 @@ const CanvasPreview = ({
       setTheSpriteItems(tempTheSpriteItems);
 
       tempTheSpriteItems.render();
-      console.log("%c Trace: exit thumbs-onload function", "color: Black;");
+      // console.log("%c Trace: exit thumbs-onload function", "color: Black;");
     }
   }
 

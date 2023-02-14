@@ -1,0 +1,46 @@
+.editAddWorkoutContainer {
+  height: calc(100vh - 90px - 12px);
+  display: flex;
+  flex-direction: row;
+  overflow-y: scroll;
+  margin-top: 12px;
+}
+
+.editWorkoutForm {
+  height: 100%;
+  display: flex;
+  flex: 0.4;
+  padding: 12px 32px;
+  flex-direction: column;
+}
+
+.addWorkoutForm {
+  width: 100%;
+  padding: 12px 32px;
+}
+
+.addWorkoutFormInputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-column-gap: 24px;
+  grid-row-gap: 12px;
+}
+
+.playerEditContainer {
+  display: flex;
+  flex: 0.6;
+}
+
+.saveWorkout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.equipmentContainer {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+}

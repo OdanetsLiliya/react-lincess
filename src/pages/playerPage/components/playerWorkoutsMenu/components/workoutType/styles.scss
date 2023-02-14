@@ -1,0 +1,20 @@
+.workoutTypeContainer{
+    text-align: left;
+    padding: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    &:hover {
+        background-color: var(--graphitic);
+    }
+}
+
+.activeWorkoutType{
+    background-color: var(--graphitic);
+}
+
+.workoutTypeTitle {
+    color: var(--white);
+    font-weight: 500;
+    font-size: 18px;
+    font-family: "Gill Sans", sans-serif;
+}

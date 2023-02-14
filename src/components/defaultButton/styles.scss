@@ -6,31 +6,29 @@
     border: 0;
     outline: 0;
     padding: 8px 1em;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 600;
     border-radius: 15px;
-    background-color: #F47D4A;
+    background-color: var(--lilac);
     &:hover {
-        background-color: #c5663e;
+        background-color: var(--lilac);
     }
     font-family: "Gill Sans", sans-serif;
-    color: #fff;
+    color: var(--white);
     font-weight: 500;
     font-size: 16px;
     white-space: nowrap;
+    cursor: pointer;
 }
 
 .darkButton {
-    background-color: darkgrey;
+    background-color: var(--light-gray);
     &:hover {
-        background-color: black;
+        background-color: var(--lilac);
     }
 }
 
 .darkActiveButton {
-    background-color: black;
+    background-color: var(--black);
     &:hover {
-        background-color: black;
+        background-color: var(--black);
     }
 }

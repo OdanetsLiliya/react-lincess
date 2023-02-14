@@ -1,0 +1,48 @@
+.selectContainer {
+}
+
+.selectControl {
+    border-width: 0px !important;
+    background-color: var(--gray) !important;
+	box-shadow: none !important;
+    height: 42px;
+}
+
+.selectSingleValue {
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white) !important;
+    font-weight: 500;
+    font-size: 13px;
+    text-align: left;
+}
+
+.selectSingleValue.placeholder {
+    color: hsl(0, 0%, 50%) !important;
+}
+
+.selectMenuList {
+    background-color: var(--gray) !important;
+    border-radius: 4px;
+    padding: 4px !important;
+}
+
+.selectOption {
+    background-color: var(--gray) !important;
+    border-radius: 4px;
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white) !important;
+    font-weight: 500;
+    font-size: 13px !important;
+    text-align: left;
+    margin: 0px 0px 4px 0px;
+    &:last-child {
+        margin: 0px;
+    }
+    &:hover {
+        background-color: var(--light-gray) !important;
+    }
+}
+
+.selectSelected {
+    background-color: var(--light-gray) !important;
+}
