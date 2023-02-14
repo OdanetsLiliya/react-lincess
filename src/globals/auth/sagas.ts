@@ -27,7 +27,7 @@ export function* logIn(payload: {
 
     if ([201, 200].includes(result.status)) {
       yield put(authActions.logInSignUpSuccess(result.data));
-      yield put(appActions.setRoute('/coaches-list'));
+      yield put(appActions.setRoute('/workouts'));
     } else {
       yield put(appActions.setMessage({
         message: result.data.message,
@@ -58,7 +58,7 @@ export function* signUp(payload: {
 
     if ([201, 200].includes(result.status)) {
       yield put(authActions.logInSignUpSuccess(result.data));
-      yield put(appActions.setRoute('/coaches-list'));
+      yield put(appActions.setRoute('/workouts'));
     } else {
       
     }

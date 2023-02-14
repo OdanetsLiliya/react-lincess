@@ -52,7 +52,7 @@ const NavBar: React.FC<NavbarPropsType> = ({ isNavbarRendering }) => {
                     title={user?.id ? `Logout` : `Login`}
                     onClick={onClick}
                 />}
-                {isMobile && <MobileNavLinks role={user.role} />}
+                {isMobile && <MobileNavLinks role={user.role} onClick={onClick} />}
             </div>
         </div>
         <BreadCrumbs />

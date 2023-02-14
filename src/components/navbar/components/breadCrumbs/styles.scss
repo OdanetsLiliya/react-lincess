@@ -6,6 +6,10 @@
     align-items: center;
 }
 
+.breadcrumbsTextDivider {
+    display: flex;
+}
+
 .breadcrumbsTextClickable {
     cursor: pointer;
     &:hover {

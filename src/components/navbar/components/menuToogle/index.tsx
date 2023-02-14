@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
-import React from "react";
+import React, { DetailedHTMLProps, HTMLAttributes } from "react";
 
-const Path = (props) => (
+import './styles.scss';
+
+const Path = (props: any) => (
   <motion.path
     fill="transparent"
     strokeLinecap="round"
@@ -11,23 +13,30 @@ const Path = (props) => (
 );
 
 const transition = { duration: 0.33 };
+const lilac = 'rgba(199,147,235,1)';
 
-export default function MenuToggle({ toggle, isOpen }) {
+export interface MenuTogglePropsType
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    toggle: () => void,
+    isOpen: boolean
+}
+
+const MenuToggle: React.FC<MenuTogglePropsType> = ({ toggle, isOpen }) => {
   return (
-    <div className="button" onClick={toggle}>
+    <div className="navBarButton" onClick={toggle}>
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path
           animate={isOpen ? "open" : "closed"}
           initial={false}
           variants={{
-            closed: { d: "M 2 2.5 L 20 2.5", stroke: "hsl(0, 100%, 100%)" },
-            open: { d: "M 3 16.5 L 17 2.5", stroke: "hsl(0, 100%, 100%)" },
+            closed: { d: "M 2 2.5 L 20 2.5", stroke: lilac },
+            open: { d: "M 3 16.5 L 17 2.5", stroke: lilac },
           }}
           transition={transition}
         />
         <Path
           d="M 2 9.423 L 20 9.423"
-          stroke="hsl(0, 100%, 100%)"
+          stroke={lilac}
           animate={isOpen ? "open" : "closed"}
           initial={false}
           variants={{
@@ -40,8 +49,8 @@ export default function MenuToggle({ toggle, isOpen }) {
           animate={isOpen ? "open" : "closed"}
           initial={false}
           variants={{
-            closed: { d: "M 2 16.346 L 20 16.346", stroke: "hsl(0, 100%, 100%)" },
-            open: { d: "M 3 2.5 L 17 16.346", stroke: "hsl(0, 100%, 100%)" },
+            closed: { d: "M 2 16.346 L 20 16.346", stroke: lilac },
+            open: { d: "M 3 2.5 L 17 16.346", stroke: lilac },
           }}
           transition={transition}
         />
@@ -49,3 +58,5 @@ export default function MenuToggle({ toggle, isOpen }) {
     </div>
   );
 }
+
+export default MenuToggle;
