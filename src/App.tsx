@@ -22,7 +22,7 @@ function App() {
   const history = useNavigate();
   const dispatch = useDispatch();
   const route = useSelector((state : RootStateType) => state?.app?.route);
-  console.log(location)
+  
   const isNavbarRendering = !(location.pathname.includes("/workout-player")
   || location.pathname.includes("/login")
   );

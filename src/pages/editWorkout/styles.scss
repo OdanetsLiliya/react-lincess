@@ -1,5 +1,5 @@
 .editWorkoutContainer{
-  height: calc(100vh - 60px);
+  height: calc(100vh - var(--navbar-height));
   display: flex;
   flex-direction: row;
   overflow: hidden;

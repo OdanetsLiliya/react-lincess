@@ -1,7 +1,7 @@
 .rotesWithNavbar {
-   padding-top: 60px;
+   padding-top: var(--navbar-height);
 }
 
 .rotesWithNavbarAndBreads {
-   padding-top: 90px;
+   padding-top: var(--navbar-breadcrumbs-heigth);
 }

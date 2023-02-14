@@ -1,5 +1,5 @@
 .breadcrumbsContainer {
-    height: 42px;
+    height: var(--breadcrumbs-height);
     padding: 0px 16px;
     width: 100%;
     display: flex;

@@ -1,10 +1,10 @@
 .permissionsDeniedContainer {
-    height: calc(100vh - 60px);
+    height: calc(100vh - var(--navbar-height));
     overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 12px;
+    padding: 0px 12px;
 }
 
 .permissionsDeniedCard {

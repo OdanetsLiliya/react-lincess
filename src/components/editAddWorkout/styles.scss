@@ -1,5 +1,5 @@
 .editAddWorkoutContainer {
-  height: calc(100vh - 90px - 12px);
+  height: calc(100vh - var(--navbar-breadcrumbs-heigth) - 12px);
   display: flex;
   flex-direction: row;
   overflow-y: scroll;
