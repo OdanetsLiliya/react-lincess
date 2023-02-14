@@ -26,7 +26,7 @@ export interface Sprite {
 
 const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, currentTime, currentWorkout }: TimeProgressBarPropsType, ref) => {
     const inputRangeRef: any = useRef(null);
-    const timeProgressbarRef: any = useRef(null);
+    const timeProgressbarRef = useRef<HTMLDivElement>(null);
     const [showCanvas, setShowCanvas] = useState(false);
     const [canvasCoords, setCanvasCoords] = useState(0);
     const [timecode, setTimeCode] = useState<string>();
@@ -57,7 +57,7 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
         let canvas: any;
         let widthOfAllSprites: number;
         let tempThumbsImages = new Image();
-        // const spritesFn = spriteRef.current.innerHTML;
+       
         tempThumbsImages.src = currentWorkout.sprites_url;
        
         tempThumbsImages.onload = function () {
@@ -113,7 +113,7 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
         setShowCanvas(false);
     }
 
-    const captureImage = (coord) => {
+    const captureImage = (coord: number) => {
         /* 
            coord - current num of secs
            1 sprite for every 10 sec
@@ -127,7 +127,13 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
         }
     };
 
-    function sprite(options) {
+    function sprite(options: {
+        context: any,
+        image: HTMLImageElement,
+        numberOfFrames: number,
+        width: number,
+        height: number,
+    }) {
         let frameIndex = 0, numberOfFrames = options.numberOfFrames || 1;
         var that: Sprite = {
             context: options.context,
@@ -171,7 +177,6 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
                 <canvas id="canvasID" className="canvasStyle">
                 </canvas>
                 <div id="msgID" className="canvasText">{timecode}</div>
-                {/* <section id="spritesSectionID" ref={spriteRef} hidden>{currentWorkout.sprites_url}</section> */}
             </div>
         )
     };

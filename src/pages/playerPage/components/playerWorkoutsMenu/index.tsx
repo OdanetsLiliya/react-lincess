@@ -1,58 +1,15 @@
 import React, { useState, HTMLAttributes, DetailedHTMLProps } from 'react';
 
-import './styles.scss';
-
-import PlayerMenu from '../../../../assets/images/player-menu.svg';
-
 import WorkoutType from './components/workoutType';
 import Workout from './components/workout';
 import PlayerWorkoutsMenuHeader from './components/playerWorkoutsMenuHeader';
 
+import PlayerMenu from '../../../../assets/images/player-menu.svg';
+
 import { Workout as WorkoutPropsType } from '../../../../types/workoutTypes';
 import { WorkoutType as WorkoutTypePropsType } from '../../../../types/workoutTypeTypes';
 
-/* const init_workouts: Array<WorkoutPropsType> = [
-    {
-      title: 'Тренировка осанка',
-      id: 1,
-      workout_type: 1,
-      image_preview_url: previewSource,
-      description: '53 мин. Убираем сутулость, раскрываем грудную клетку, формируем осанку, укрепляем мышцы спины, рук',
-      video_url: videoSource
-    }, {
-      title: 'Тренировка осанка',
-      id: 2,
-      workout_type: 1,
-      image_preview_url: previewSource,
-      description: '54 мин. Работа с лопатками, убираем сутулость грудного отдела, укрепляем мышцы спины и рук',
-      video_url: videoSource
-    },
-    {
-      title: 'Тренировка осанка',
-      id: 3,
-      workout_type: 1,
-      image_preview_url: previewSource,
-      description: '54 мин. Работа с лопатками, убираем сутулость грудного отдела, укрепляем мышцы спины и рук',
-      video_url: videoSource
-    },
-    {
-      title: 'Тренировка осанка',
-      id: 4,
-      workout_type: 1,
-      image_preview_url: previewSource,
-      description: '54 мин. Работа с лопатками, убираем сутулость грудного отдела, укрепляем мышцы спины и рук',
-      video_url: videoSource
-    },
-    {
-      title: 'Тренировка осанка',
-      id: 5,
-      workout_type: 1,
-      image_preview_url: previewSource,
-      description: '54 мин. Работа с лопатками, убираем сутулость грудного отдела, укрепляем мышцы спины и рук',
-      video_url: videoSource
-    },
-]; */
-
+import './styles.scss';
 export interface PlayerEpisodeMenuPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     fastForward: () => void,
@@ -65,7 +22,6 @@ export interface PlayerEpisodeMenuPropsType
     refreshOrChageVideo: () => void,
 }
 
-
 const PlayerEpisodeMenu: React.FC<PlayerEpisodeMenuPropsType> = ({
     fastForward, currentWorkout, setCurrentWorkout, currentWorkoutType, setCurrentWorkoutType, isOpen, setIsOpen, refreshOrChageVideo
 }) => {
@@ -74,7 +30,7 @@ const PlayerEpisodeMenu: React.FC<PlayerEpisodeMenuPropsType> = ({
     const [isWorkoutTypesVisible, setIsWorkoutTypesVisible] = useState(false);
     const [selectedWorkoutType, setSelectedWorkoutType] = useState(currentWorkoutType);
 
-    const changeWorkoutTypesVisibility = (value) => {
+    const changeWorkoutTypesVisibility = (value: boolean) => {
         setIsWorkoutTypesVisible(value)
     }
 
@@ -153,9 +109,7 @@ const PlayerEpisodeMenu: React.FC<PlayerEpisodeMenuPropsType> = ({
                         }
                     </div>
                 </div>
-
             </div>
-
         </div>
     );
 };

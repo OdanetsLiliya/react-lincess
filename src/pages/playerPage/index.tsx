@@ -9,7 +9,7 @@ import { RootStateType } from '../../stores';
 import { workoutActions } from '../../globals/workouts/actions';
 import Player from './components/player';
 
-const PlayerPage = () => {
+const PlayerPage: React.FC = () => {
     const params = useParams();
 
     const dispatch = useDispatch();

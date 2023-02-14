@@ -1,11 +1,19 @@
-import React from 'react';
+import React, {DetailedHTMLProps, HTMLAttributes } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import CloseIcon from '../../../../assets/images/close.svg';
 
 import './styles.scss';
 
-const TopPlayerMenu = ({ 
+export interface TopPlayerMenuType 
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    title: string,
+    isEpisodeMenuOpen: boolean,
+    playing: boolean,
+    onClick: () => void
+}
+
+const TopPlayerMenu: React.FC<TopPlayerMenuType> = ({
     title,
     isEpisodeMenuOpen,
     playing,
