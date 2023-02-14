@@ -1,3 +1,4 @@
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import classNames from "classnames";
 import { useSelector } from 'react-redux';
@@ -16,12 +17,19 @@ import AddWorkoutPage from '../../pages/AddWorkout';
 import RequireAuth from './components/requireAuth';
 import RequireAdmin from './components/requireAdmin';
 
+import { RootStateType } from '../../stores';
+
 import { useBreadCrumbsRoutes } from '../../hooks/useBasePath';
 
 import './styles.scss';
 
-const Routing = ({ isNavbarRendering }) => {
-  const user = useSelector((state) => state.auth?.user);
+export interface RoutingType
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  isNavbarRendering: boolean
+}
+
+const Routing: React.FC<RoutingType> = ({ isNavbarRendering }) => {
+  const user = useSelector((state: RootStateType) => state.auth?.user);
   const isBreadCrumbsRoutes = useBreadCrumbsRoutes();
 
   const privateRoutes = [
@@ -87,7 +95,7 @@ const Routing = ({ isNavbarRendering }) => {
             {...routeParams}
             key={routeParams.path}
             element={<RequireAdmin userRole={user?.role}
-              Component={Component} />}
+            Component={Component} />}
           />)}
         {publicRoutes.map(({ Component, ...routeParams }) =>
           <Route
@@ -96,8 +104,8 @@ const Routing = ({ isNavbarRendering }) => {
             element={<Component />}
           />)}
         <Route
-            path="*"
-            element={<ErrorPage description="Страница не найдена. Обратитесь к администратору сайта."/>}
+          path="*"
+          element={<ErrorPage description="Страница не найдена. Обратитесь к администратору сайта." />}
         />
       </Routes>
     </main>

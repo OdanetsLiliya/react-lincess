@@ -46,7 +46,7 @@ const InputWithIcon: React.FC<InputWithIconPropsType> = ({
 }) => {
 	const customProps = !isFormInput ? {
 		value,
-		onChange: (e) => {
+		onChange: (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => {
 			if (setValue) {
 				setValue(e.target.value)
 			}
@@ -75,7 +75,6 @@ const InputWithIcon: React.FC<InputWithIconPropsType> = ({
 					placeholder={placeholder}
 					{...customProps}
 					{...register(props.label, { ...props.pattern })}
-					// {...props}
 					style={inputStyle}
 					onClick={onClickOnInput}
 					autoComplete={props.autoComplete}

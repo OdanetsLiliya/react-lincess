@@ -6,11 +6,13 @@ import { appActions } from '../../globals/app/actions';
 
 import CloseIcon from '../../assets/images/close.svg';
 
+import { RootStateType } from '../../stores';
+
 import './styles.scss';
 
-const Message = () => {
-    const isShowMessage = useSelector((state) => state.app.isShowMessage);
-    const message = useSelector((state) => state.app.message);
+const Message: React.FC = () => {
+    const isShowMessage = useSelector((state: RootStateType) => state.app.isShowMessage);
+    const message = useSelector((state: RootStateType) => state.app.message);
     const dispatch = useDispatch();
 
     const onExitFlash = () => {
@@ -22,12 +24,12 @@ const Message = () => {
 
     useEffect(() => {
         if (isShowMessage) {
-          const timeout = setTimeout(() => onExitFlash(), 1000);
-          return () => {
-            clearTimeout(timeout);
-          };
+            const timeout = setTimeout(() => onExitFlash(), 1000);
+            return () => {
+                clearTimeout(timeout);
+            };
         }
-      }, [isShowMessage]);
+    }, [isShowMessage]);
 
     return <CSSTransition
         in={isShowMessage}
@@ -39,10 +41,10 @@ const Message = () => {
         <div className="flashContainer">
             <div className="flashMessage">{message}</div>
             <img
-               alt=""
-               src={CloseIcon}
-               className="flashClose"
-               onClick={onExitFlash}
+                alt=""
+                src={CloseIcon}
+                className="flashClose"
+                onClick={onExitFlash}
             />
         </div>
     </CSSTransition>

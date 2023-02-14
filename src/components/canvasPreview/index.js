@@ -1,9 +1,8 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import './styles.scss';
 
 import spritesSection from '../../../../assets/images/naruto-sprite-1.jpeg';
-import InputRange from '../../../../components/inputRange';
 
 const CanvasPreview = ({
   canvasCoords,

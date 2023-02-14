@@ -129,8 +129,6 @@ const EditAddWorkout = ({
         }
     }, [equipmentOptions, detailedWorkout])
 
-    console.log(formData)
-
     return (
         <div className={`${isEdit ? 'editWorkoutContainer' : '' } editAddWorkoutContainer`}>
             <div className={`${isEdit ? 'editWorkoutForm' : 'addWorkoutForm'}`}>

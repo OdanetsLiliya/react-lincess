@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useImperativeHandle, HTMLAttributes, DetailedHTMLProps  } from 'react';
+import React, { forwardRef, useState, useImperativeHandle, HTMLAttributes, DetailedHTMLProps } from 'react';
 
 import './styles.scss';
 
@@ -12,18 +12,17 @@ export interface InputRangePropsType
   max?: number
 }
 
-const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, initialState, max = 100 } : InputRangePropsType , ref) => {
+const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, initialState, max = 100 }: InputRangePropsType, ref) => {
   const [savedValue, setSavedValue] = useState(initialState || 0);
 
-  const onInput = (e) => {
+  const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newVal = Number(e.target.value);
-    console.log({ newVal, max: Math.floor(max) })
     onClick(newVal)
     setSavedValue(newVal);
   }
 
   useImperativeHandle(ref, () => ({
-    setInputValue(val) {
+    setInputValue(val: number) {
       setSavedValue(val);
     }
   }));
@@ -31,9 +30,9 @@ const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, init
   return (
     <div className="range">
       <progress
-         id="progress-bar"
-         value={savedValue}
-         max={Math.floor(max)}
+        id="progress-bar"
+        value={savedValue}
+        max={Math.floor(max)}
       >
       </progress>
       <input
@@ -58,7 +57,7 @@ const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, init
           className="active_progress_point"
         >
         </div>  */}
-        { Child }
+        {Child}
       </div>
 
     </div>

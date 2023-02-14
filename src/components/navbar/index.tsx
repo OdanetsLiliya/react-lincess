@@ -14,7 +14,7 @@ import { authActions } from '../../globals/auth/actions';
 
 import { RootStateType } from '../../stores';
 
-import { DeviceSize } from "../responsive";
+import { DeviceSize } from "../../assets/responsive";
 
 import './styles.scss';
 
