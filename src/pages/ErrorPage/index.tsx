@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { HTMLAttributes, DetailedHTMLProps } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import DefaultButton from '../../components/defaultButton';
 
 import './styles.scss';
+export interface ErrorPagePropsType
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    description: string;
+}
 
-const ErrorPage = ({
-    description
-}) => {
+const ErrorPage: React.FC<ErrorPagePropsType> = ({ description }) => {
     const history = useNavigate();
 
     const onClick = () => {
