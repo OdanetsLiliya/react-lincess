@@ -131,6 +131,9 @@ const EditAddWorkout = ({
 
     return (
         <div className={`${isEdit ? 'editWorkoutContainer' : '' } editAddWorkoutContainer`}>
+            {isEdit ? <div className='playerEditContainer'>
+                <Player detailedWorkout={detailedWorkout} isSmall={true} />
+            </div> : <></>}
             <div className={`${isEdit ? 'editWorkoutForm' : 'addWorkoutForm'}`}>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className={`${isEdit ? '' : 'addWorkoutFormInputs'}`}>
@@ -237,9 +240,6 @@ const EditAddWorkout = ({
                     </div>
                 </form>
             </div>
-            {isEdit ? <div className='playerEditContainer'>
-                <Player detailedWorkout={detailedWorkout} isSmall={true} />
-            </div> : <></>}
         </div>
     )
 }

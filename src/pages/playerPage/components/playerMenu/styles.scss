@@ -1,34 +1,31 @@
+.playerMenu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0px 12px;
+}
 
- 
-  .playerMenu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 0px 12px;
+.topMenuGradient {
+  height: 49px;
+  &.menuBlur {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
   }
+}
 
-  .topMenuGradient {
-    height: 49px;
-    &.menuBlur {
-      // backdrop-filter: blur(8px);
-      background: linear-gradient(transparent,rgba(0,0,0,.75));
-    }
+@keyframes FadeAnimation {
+  0% {
+    opacity: 1;
   }
-
-  @keyframes FadeAnimation {
-    0% {
-      opacity: 1;
-    }
-    100% {
-      opacity: 0;
-    }
+  100% {
+    opacity: 0;
   }
-  .animate {
-    animation: FadeAnimation 3s ease-in .1s forwards;
-    &:hover {
-      animation: none;
-    }
+}
+.animate {
+  animation: FadeAnimation 3s ease-in 0.1s forwards;
+  &:hover {
+    animation: none;
   }
+}

@@ -1,15 +1,14 @@
 .editAddWorkoutContainer {
-  height: calc(100vh - var(--navbar-breadcrumbs-heigth) - 12px);
+  height: calc(100vh - var(--navbar-breadcrumbs-heigth));
   display: flex;
   flex-direction: row;
   overflow-y: scroll;
-  margin-top: 12px;
 }
 
 .editWorkoutForm {
   height: 100%;
   display: flex;
-  flex: 0.4;
+  flex: 0.5;
   padding: 12px 32px;
   flex-direction: column;
 }
@@ -28,7 +27,9 @@
 
 .playerEditContainer {
   display: flex;
-  flex: 0.6;
+  flex: 0.5;
+  padding-top: 32px;
+  justify-content: center;
 }
 
 .saveWorkout {
@@ -57,9 +58,6 @@
     flex-direction: column;
   }
   .playerEditContainer {
-    display: none;
-  }
-  .editWorkoutForm {
-    flex: 1;
+    padding: 0px 20px;
   }
 }
