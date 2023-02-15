@@ -6,6 +6,7 @@ import PlayHandler from '../playHandler';
 import PlayerMenu from '../playerMenu';
 import TopPlayerMenu from '../topPlayerMenu';
 import ReactHlsPlayer from '../reactHlsPlayer';
+import PlayerLoader from '../playerLoader';
 
 const Player = ({ detailedWorkout, isSmall = false }) => {
     const videoRef: any = useRef<HTMLVideoElement>(null);
@@ -18,6 +19,7 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
     const [timeControlsEnabled, setTimeControlsEnabled] = useState(false);
     const [isEpisodeMenuOpen, setIsEpisodeMenuOpen] = useState(false);
     const [isLoadedMetadata, setIsLoadedMetadata] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     const videoHandler = (control: string) => {
         if (control === "play") {
@@ -49,7 +51,7 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
     }
 
     const onLoadStart = () => {
-       console.log('onLoadStart')
+        console.log('onLoadStart')
     }
 
     const onVideoClick = () => {
@@ -58,21 +60,23 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
         }
     }
 
-    useEffect(()=> {
-        videoRef.current.load()
-    }, [detailedWorkout])
+    // Commented to fix blob error
+    // https://github.com/videojs/video.js/issues/7005
+    /* useEffect(()=> {
+       videoRef.current.load()
+    }, [detailedWorkout]) */
 
-    useEffect(()=> {
+    useEffect(() => {
         const keyBoardListenerFunc = (e) => {
             console.log(e.key, e.code)
-            if (e.code === 'Space') { 
+            if (e.code === 'Space') {
                 videoHandler(playing ? "pause" : "play")
             }
         }
         document.addEventListener('keydown', keyBoardListenerFunc);
         return () => {
             document.removeEventListener("keydown", keyBoardListenerFunc)
-          }
+        }
     }, [playing])
 
     return (
@@ -86,6 +90,8 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
                     onLoadedMetadata={handleLoadedMetadata}
                     onTimeUpdate={onTimeUpdate}
                     onLoadStart={onLoadStart}
+                    onWaiting={() => setIsLoading(true)}
+                    onPlaying={() => setIsLoading(false)}
                     // poster={detailedWorkout.image_preview_url}
                 />
 
@@ -94,12 +100,12 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
                     videoHandler={videoHandler}
                 />
 
-                { !isSmall ? <TopPlayerMenu
+                {!isSmall ? <TopPlayerMenu
                     title={detailedWorkout.title}
                     isEpisodeMenuOpen={isEpisodeMenuOpen}
                     onClick={onVideoClick}
                     playing={playing}
-                /> : <></> }
+                /> : <></>}
 
                 <PlayerMenu
                     videoHandler={videoHandler}
@@ -116,6 +122,10 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
                     setCurrentWorkoutType={() => { }}
                     isEpisodeMenuOpen={isEpisodeMenuOpen}
                     setIsEpisodeMenuOpen={setIsEpisodeMenuOpen}
+                />
+
+                <PlayerLoader
+                    loading={isLoading}
                 />
 
             </div>
