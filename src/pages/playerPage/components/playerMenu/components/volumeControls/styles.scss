@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     padding-right: 4px;
-    padding-left: 24px;
+    padding-left: 12px;
   }
 
   .volumeControl {
@@ -51,5 +51,13 @@
     background-color: darkgray;
     height: 100%;
   }
+
+  @media(max-width: 600px) {
+    .volumeControlsIcon {
+      width: 24px;
+      height: 24px;
+    }
+  }
+    
   
   

@@ -11,5 +11,10 @@
     margin-left: 0px;
   }
 }
-  
- 
+
+@media (max-width: 600px) {
+  .pipControlsIcon {
+    width: 32px;
+    height: 32px;
+  }
+}

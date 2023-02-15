@@ -60,7 +60,7 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
             />
             <div className="volumeControl">
               <InputRange
-                 // ref={soundProgressBarRef}
+                 ref={soundProgressBarRef}
                  onClick={onClick}
                  initialState={INITIAL_STATE}
                />

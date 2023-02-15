@@ -72,7 +72,7 @@ const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
                         src={Play}
                     />
                 )}
-                <div className="leftButtonsControl">
+                {/* <div className="leftButtonsControl">
                     <img
                         className="controlsIcon"
                         onClick={fastForward}
@@ -85,7 +85,7 @@ const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
                         alt=""
                         src={Next}
                     />
-                </div>
+                </div> */}
 
                 <div className="leftButtonsControl">
                     <img
@@ -111,7 +111,7 @@ const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
             </div>
 
             <div className="rightControlsContainer">
-                <PlayerEpisodeMenu
+                {/* <PlayerEpisodeMenu
                     currentWorkout={currentWorkout}
                     setCurrentWorkout={setCurrentWorkout}
                     currentWorkoutType={currentWorkoutType}
@@ -120,7 +120,7 @@ const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
                     setIsOpen={setIsEpisodeMenuOpen}
                     refreshOrChageVideo={refreshOrChageVideo}
                     fastForward={fastForward}
-                />
+                 /> */}
                 <PipControls
                     videoRef={videoRef}
                 />
