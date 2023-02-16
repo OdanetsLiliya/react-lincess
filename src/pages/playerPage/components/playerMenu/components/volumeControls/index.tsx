@@ -10,7 +10,6 @@ import Sound_1 from '../../../../../../assets/images/sound-1.svg';
 import Sound_2 from '../../../../../../assets/images/sound-2.svg';
 
 import './styles.scss';
-
 export interface VolumeControlsPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     updateVolume: (volume: number) => void,
@@ -21,6 +20,9 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
     const [soundProgress, setSoundProgress] = useState(INITIAL_STATE / 100);
     const soundProgressBarRef: any = useRef();
     const volumeControlRef: any = useRef();
+    
+    const [hoveredOutside, setIsHoveredOutside] = useState(false);
+    const [hoveredInside, setIsHoveredInside] = useState(false);
 
     const onClick = (e) => {
         const offsetPercent = Dom.getPointerPosition(volumeControlRef?.current, e).x * 100;
@@ -65,19 +67,27 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
     }
 
     return (
-        <div className="volumeControlsContainer">
+        <div
+        className="volumeControlsContainer"
+        onMouseOver={() => setIsHoveredInside(true)}
+        onMouseOut={() => setIsHoveredInside(false)}
+        >
             <img
                 onClick={() => updateSound()}
                 className="volumeControlsIcon"
                 alt=""
                 src={getIcon()}
             />
-            <div className="volumeControl" ref={volumeControlRef}>
+            <div
+            className={`volumeControl ${hoveredInside || hoveredOutside ? 'volumeControlHover': ''}`}
+            ref={volumeControlRef}
+            >
                 <InputRange
                     ref={soundProgressBarRef}
                     onClick={onClick}
                     onMouseMove={onMouseMove}
                     initialState={INITIAL_STATE}
+                    setIsHovered={setIsHoveredOutside}
                 />
             </div>
 

@@ -30,6 +30,7 @@ export interface Sprite {
 const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, currentTime, currentWorkout }: TimeProgressBarPropsType, ref) => {
     const inputRangeRef: any = useRef(null);
     const timeProgressbarRef = useRef<HTMLDivElement>(null);
+
     const [showCanvas, setShowCanvas] = useState(false);
     const [canvasCoords, setCanvasCoords] = useState(0);
     const [timecode, setTimeCode] = useState<string>();

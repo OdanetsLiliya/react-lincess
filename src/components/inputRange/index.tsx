@@ -8,10 +8,11 @@ export interface InputRangePropsType
   onClick: (e: any) => void,
   onMouseLeave?: (e: any) => void,
   initialState?: number
-  max?: number
+  max?: number,
+  setIsHovered?: (value: boolean) => void; 
 }
 
-const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, initialState, max = 100 }: InputRangePropsType, ref) => {
+const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, initialState, max = 100, setIsHovered = () => {} }: InputRangePropsType, ref) => {
   const [savedValue, setSavedValue] = useState(initialState || 0);
   const [dragging, setDragging] = useState(false);
 
@@ -40,12 +41,14 @@ const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, init
     document.removeEventListener("mousemove", onMouseMove);
     document.removeEventListener("mouseup", onMouseUp);
     setDragging(false);
+    setIsHovered(false);
   };
 
   const onMouseDown = (event) => {
     document.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseup", onMouseUp);
     setDragging(true);
+    setIsHovered(true);
   };
 
   useEffect(() => {
