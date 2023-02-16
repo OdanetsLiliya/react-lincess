@@ -5,7 +5,8 @@
   bottom: 0;
   left: 0;
   right: 0;
-  padding: 0px 12px;
+  padding: 0px 12px 8px;
+  height: 60px;
 }
 
 .topMenuGradient {
@@ -23,6 +24,7 @@
     opacity: 0;
   }
 }
+
 .animate {
   animation: FadeAnimation 3s ease-in 0.1s forwards;
   &:hover {

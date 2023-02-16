@@ -6,19 +6,19 @@ import BackWard from '../../../../../../assets/images/backward-5.svg';
 import ForWard from '../../../../../../assets/images/forward-5.svg';
 import Pause from '../../../../../../assets/images/pause.svg';
 import Play from '../../../../../../assets/images/play.svg';
-import Prev from '../../../../../../assets/images/prev.svg';
-import Next from '../../../../../../assets/images/next.svg';
+// import Prev from '../../../../../../assets/images/prev.svg';
+// import Next from '../../../../../../assets/images/next.svg';
 
 import TimeControls from '../timeControls';
 import VolumeControls from '../volumeControls';
 import FullScreenControls from '../fullScreenControls';
-import PlayerEpisodeMenu from '../../../playerWorkoutsMenu';
+// import PlayerEpisodeMenu from '../../../playerWorkoutsMenu';
 import PipControls from '../pipControls';
 
 
 import { Workout } from '../../../../../../types/workoutTypes';
 import { WorkoutType } from '../../../../../../types/workoutTypeTypes';
- 
+
 export interface PlayerMenuPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     videoHandler: (control: string) => void,
@@ -38,21 +38,34 @@ export interface PlayerMenuPropsType
     refreshTimeProgressBar: () => void,
 }
 
+// TO DO: think about other controls + menu
 const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
-    videoHandler, playing, videoTime,
-    currentTime, currentWorkout, setCurrentWorkout, currentWorkoutType, setCurrentWorkoutType,
-    isEpisodeMenuOpen, setIsEpisodeMenuOpen, videoRef, playerRef, revert, fastForward,
-    refreshTimeProgressBar
+    videoHandler,
+    playing,
+    videoTime,
+    currentTime,
+    /* currentWorkout,
+    setCurrentWorkout,
+    currentWorkoutType,
+    setCurrentWorkoutType,
+    isEpisodeMenuOpen,
+    setIsEpisodeMenuOpen,
+    refreshTimeProgressBar,
+    */
+    videoRef,
+    playerRef,
+    revert,
+    fastForward,
 }) => {
 
     const videoVolumeUpdate = (volume) => {
         videoRef.current.volume = volume;
     }
 
-    const refreshOrChageVideo = () => {
+    /* const refreshOrChageVideo = () => {
         refreshTimeProgressBar();
         videoHandler("pause");
-    }
+    } */
 
     return (
         <div className="playControlsContainer">
