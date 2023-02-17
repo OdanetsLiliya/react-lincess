@@ -9,7 +9,7 @@ import usePip from '../../../../../../hooks/usePip';
 
 export interface PipControlsPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    videoRef: any,
+    videoRef: React.RefObject<HTMLVideoElement>,
 }
 
 const PipControls: React.FC<PipControlsPropsType> = ({

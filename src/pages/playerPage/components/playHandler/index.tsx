@@ -2,7 +2,7 @@ import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import './styles.scss';
 
-import Play from '../../../../assets/images/play.svg';
+import Play from '../../../../assets/images/play1.svg';
 
 export interface PlayHandlerType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {

@@ -1,4 +1,5 @@
 import { FilterCommonType, FilterType } from '../types/filterTypes';
+import { DictType } from '../types/dictTypes';
 
 export const getFilterArray = (arr: Array<FilterCommonType>) => {
     return arr.map((item: FilterCommonType) => getFilterItem(item))
@@ -14,7 +15,7 @@ export const getFilterItem = (item: FilterCommonType) => {
 export const getFiltersToSet = (
     arrayData: FilterType[],
 ) => {
-    let filtersToSet: any = {};
+    let filtersToSet: DictType = {};
     arrayData.forEach((arrayItem) =>
       filtersToSet[arrayItem.value] = false
     );

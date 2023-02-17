@@ -8,7 +8,7 @@ import Shrink from '../../../../../../assets/images/shrink.svg';
 
 export interface FullScreenControlsPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    playerRef: any,
+    playerRef: React.RefObject<HTMLDivElement>,
 }
 
 const FullScreenControls: React.FC<FullScreenControlsPropsType> = ({
@@ -18,7 +18,7 @@ const FullScreenControls: React.FC<FullScreenControlsPropsType> = ({
     const [isFullScreen, setIsFullScreen] = useState(false);
 
     const toogleFullScreen = () => {
-        if (screenfull.isEnabled) {
+        if (screenfull.isEnabled && playerRef.current) {
             screenfull.request(playerRef.current);
             setIsFullScreen(true);
         }

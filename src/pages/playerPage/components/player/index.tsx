@@ -9,8 +9,8 @@ import ReactHlsPlayer from '../reactHlsPlayer';
 import PlayerLoader from '../playerLoader';
 
 const Player = ({ detailedWorkout, isSmall = false }) => {
-    const videoRef: any = useRef<HTMLVideoElement>(null);
-    const playerRef: any = useRef(null);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const playerRef = useRef<HTMLDivElement>(null);
 
     const [playing, setPlaying] = useState(false);
     const [controlsVisible, setControlsVisible] = useState(true);
@@ -22,20 +22,22 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const videoHandler = (control: string) => {
-        if (control === "play") {
-            videoRef.current.play();
-            setPlaying(true);
-            setControlsVisible(false);
-            var vid: any = document.getElementById("video1");
-            if (vid?.duration) {
-                setVideoTime(vid.duration);
+        if (videoRef.current) {
+            if (control === "play") {
+                videoRef.current.play();
+                setPlaying(true);
+                setControlsVisible(false);
+                var vid: any = document.getElementById("video1");
+                if (vid?.duration) {
+                    setVideoTime(vid.duration);
+                }
+            } else if (control === "pause") {
+                videoRef.current.pause();
+                setPlaying(false);
+                setControlsVisible(true);
             }
-        } else if (control === "pause") {
-            videoRef.current.pause();
-            setPlaying(false);
-            setControlsVisible(true);
+            setTimeControlsEnabled(true);
         }
-        setTimeControlsEnabled(true);
     };
 
     const handleLoadedMetadata = () => {
@@ -47,7 +49,9 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
     }
 
     const onTimeUpdate = () => {
-        setCurrentTime(videoRef.current?.currentTime);
+        if (videoRef.current) {
+            setCurrentTime(videoRef.current?.currentTime);
+        }
     }
 
     const onLoadStart = () => {
@@ -92,7 +96,7 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
                     onLoadStart={onLoadStart}
                     onWaiting={() => setIsLoading(true)}
                     onPlaying={() => setIsLoading(false)}
-                    // poster={detailedWorkout.image_preview_url}
+                // poster={detailedWorkout.image_preview_url}
                 />
 
                 <PlayHandler
@@ -105,6 +109,7 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
                     isEpisodeMenuOpen={isEpisodeMenuOpen}
                     onClick={onVideoClick}
                     playing={playing}
+                    description={detailedWorkout.description}
                 /> : <></>}
 
                 <PlayerMenu

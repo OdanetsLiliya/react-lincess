@@ -9,10 +9,26 @@ export interface InputRangePropsType
   onMouseLeave?: (e: any) => void,
   initialState?: number
   max?: number,
-  setIsHovered?: (value: boolean) => void; 
+  setIsHovered?: (value: boolean) => void;
 }
 
-const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, initialState, max = 100, setIsHovered = () => {} }: InputRangePropsType, ref) => {
+export interface InputRangeHandle
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  setInputValue: (e: number) => void,
+  getIsDrag: () => boolean,
+}
+
+const InputRange = forwardRef(({
+  Child,
+  onMouseMove,
+  onClick,
+  onMouseLeave,
+  initialState,
+  max = 100,
+  setIsHovered = () => { }
+}: InputRangePropsType,
+  ref: React.Ref<InputRangeHandle>
+) => {
   const [savedValue, setSavedValue] = useState(initialState || 0);
   const [dragging, setDragging] = useState(false);
 
@@ -56,7 +72,7 @@ const InputRange = forwardRef(({ Child, onMouseMove, onClick, onMouseLeave, init
       document.removeEventListener("mousemove", () => onMouseMove);
       document.removeEventListener("mouseup", onMouseUp);
     };
-  }, []); 
+  }, []);
 
   return (
     <div

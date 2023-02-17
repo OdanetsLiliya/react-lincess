@@ -1,4 +1,4 @@
-import React, { useState, useRef, HTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { useState, forwardRef, useRef, HTMLAttributes, DetailedHTMLProps, useImperativeHandle } from 'react';
 
 import * as Dom from '../../../../../../utils/dom';
 
@@ -9,31 +9,37 @@ import Sound_0 from '../../../../../../assets/images/sound-0.svg';
 import Sound_1 from '../../../../../../assets/images/sound-1.svg';
 import Sound_2 from '../../../../../../assets/images/sound-2.svg';
 
+import { InputRangeHandle } from '../../../../../../components/inputRange';
+
 import './styles.scss';
 export interface VolumeControlsPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     updateVolume: (volume: number) => void,
 }
+export interface VolumeControlsHandle
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    getIsHovered: () => boolean,
+}
 
-const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => {
+const VolumeControls = forwardRef(({ updateVolume }: VolumeControlsPropsType, ref: React.Ref<VolumeControlsHandle>) => {
     const INITIAL_STATE = 60;
     const [soundProgress, setSoundProgress] = useState(INITIAL_STATE / 100);
-    const soundProgressBarRef: any = useRef();
-    const volumeControlRef: any = useRef();
-    
+    const soundProgressBarRef = useRef<InputRangeHandle>(null);
+    const volumeControlRef = useRef<HTMLDivElement>(null);
+
     const [hoveredOutside, setIsHoveredOutside] = useState(false);
     const [hoveredInside, setIsHoveredInside] = useState(false);
 
-    const onClick = (e) => {
+    const onClick = (e: MouseEvent) => {
         const offsetPercent = Dom.getPointerPosition(volumeControlRef?.current, e).x * 100;
         const volume = Number((offsetPercent / 100).toFixed(1))
         updateVolume(volume)
         setSoundProgress(volume)
-        soundProgressBarRef.current.setInputValue(volume * 100);
+        soundProgressBarRef?.current?.setInputValue(volume * 100);
     }
 
-    const onMouseMove = (e: any) => {
-        if (soundProgressBarRef?.current.getIsDrag()) {
+    const onMouseMove = (e: MouseEvent) => {
+        if (soundProgressBarRef?.current?.getIsDrag()) {
             const offsetPercent = Dom.getPointerPosition(volumeControlRef?.current, e).x * 100;
             const volume = Number((offsetPercent / 100).toFixed(1))
             updateVolume(volume)
@@ -43,7 +49,7 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
     }
 
     const updateSound = () => {
-        let value;
+        let value: number;
         if (soundProgress !== 0) {
             value = 0;
         } else {
@@ -51,7 +57,7 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
         }
         setSoundProgress(value);
         updateVolume(value);
-        soundProgressBarRef.current.setInputValue(value * 100);
+        soundProgressBarRef?.current?.setInputValue(value * 100);
     }
 
     const getIcon = () => {
@@ -66,11 +72,17 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
         }
     }
 
+    useImperativeHandle(ref, () => ({
+        getIsHovered() {
+            return hoveredInside || hoveredOutside;
+        }
+    }));
+
     return (
         <div
-        className="volumeControlsContainer"
-        onMouseOver={() => setIsHoveredInside(true)}
-        onMouseOut={() => setIsHoveredInside(false)}
+            className="volumeControlsContainer"
+            onMouseOver={() => setIsHoveredInside(true)}
+            onMouseOut={() => setIsHoveredInside(false)}
         >
             <img
                 onClick={() => updateSound()}
@@ -79,8 +91,8 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
                 src={getIcon()}
             />
             <div
-            className={`volumeControl ${hoveredInside || hoveredOutside ? 'volumeControlHover': ''}`}
-            ref={volumeControlRef}
+                className={`volumeControl ${hoveredInside || hoveredOutside ? 'volumeControlHover' : ''}`}
+                ref={volumeControlRef}
             >
                 <InputRange
                     ref={soundProgressBarRef}
@@ -93,6 +105,6 @@ const VolumeControls: React.FC<VolumeControlsPropsType> = ({ updateVolume }) => 
 
         </div>
     )
-};
+});
 
 export default VolumeControls;

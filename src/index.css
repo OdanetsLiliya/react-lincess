@@ -40,6 +40,7 @@ svg + svg {
   --tundora: #444;
   --gray-shadow: #9FA0AA;
   --error: #D55C65;
+  --icons-shadow: rgba(0, 0, 0, 0.2);
 
   --navbar-height: 60px;
   --breadcrumbs-height: 42px;

@@ -1,4 +1,4 @@
-import React, { useRef, HTMLAttributes, DetailedHTMLProps, useEffect } from 'react';
+import React, { useRef, HTMLAttributes, DetailedHTMLProps, useEffect, MutableRefObject } from 'react';
 import screenfull from 'screenfull';
 
 import './styles.scss';
@@ -9,11 +9,13 @@ import TimeProgressBar from './components/timeProgressBar';
 import { Workout } from '../../../../types/workoutTypes';
 import { WorkoutType } from '../../../../types/workoutTypeTypes';
 
+import { PlayerButtonsHandle } from './components/playerButtons';
+import { TimeProgressBarHandle } from './components/timeProgressBar';
 export interface PlayerMenuPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     videoHandler: (control: string) => void,
-    videoRef: any,
-    playerRef: any,
+    videoRef: React.RefObject<HTMLVideoElement>,
+    playerRef: React.RefObject<HTMLDivElement>,
     videoTime: number,
     currentTime: number,
     setCurrentTime: (time: number) => void,
@@ -27,44 +29,49 @@ export interface PlayerMenuPropsType
     setIsEpisodeMenuOpen: (status: boolean) => void
 }
 
-const PlayerMenu: React.FC<PlayerMenuPropsType> =  ({
+const PlayerMenu: React.FC<PlayerMenuPropsType> = ({
     videoHandler, videoRef, playerRef, videoTime,
     currentTime, setCurrentTime, timeControlsEnabled, playing,
     currentWorkout, setCurrentWorkout, currentWorkoutType, setCurrentWorkoutType,
     isEpisodeMenuOpen, setIsEpisodeMenuOpen
 }) => {
-    const timeProgressBarRef: any = useRef();
+    const timeProgressBarRef = useRef<TimeProgressBarHandle>(null);
+    const playerButtonsRef = useRef<PlayerButtonsHandle>(null);
 
     const fastForward = () => {
-        videoRef.current.currentTime += 5;
+        if (videoRef?.current?.currentTime) {
+            videoRef.current.currentTime += 5;
+        }
     };
 
     const revert = () => {
-        videoRef.current.currentTime -= 5;
+        if (videoRef?.current?.currentTime) {
+            videoRef.current.currentTime -= 5;
+        }
     };
 
     const revertWithPanel = () => {
         revert();
-        timeProgressBarRef.current.inputRangeChange(-5);
+        timeProgressBarRef?.current?.inputRangeChange(-5);
     }
 
     const forwardWithPanel = () => {
         fastForward();
-        timeProgressBarRef.current.inputRangeChange(5);
+        timeProgressBarRef?.current?.inputRangeChange(5);
     }
 
     const refreshTimeProgressBar = () => {
-        timeProgressBarRef.current.inputRangeRefresh();
+        timeProgressBarRef?.current?.inputRangeRefresh();
     }
 
     useEffect(() => {
-        timeProgressBarRef.current.inputRangeUpdate();
+        timeProgressBarRef?.current?.inputRangeUpdate();
     }, [currentTime])
 
 
     return (
         <div
-            className={`playerMenu ${playing && !isEpisodeMenuOpen ? 'animate' : ''}`}
+            className={`playerMenu ${playing && !isEpisodeMenuOpen && !timeProgressBarRef?.current?.getIsDrag() && !playerButtonsRef?.current?.getIsHovered() ? 'animate' : ''}`}
             style={{ opacity: !timeControlsEnabled ? 0 : 1 }}
         >
             <div className={`topMenuGradient ${screenfull.isFullscreen ? '' : 'menuBlur'}`}>
@@ -78,6 +85,7 @@ const PlayerMenu: React.FC<PlayerMenuPropsType> =  ({
                 />
 
                 <PlayerButtons
+                    ref={playerButtonsRef}
                     videoRef={videoRef}
                     playerRef={playerRef}
                     revert={revertWithPanel}

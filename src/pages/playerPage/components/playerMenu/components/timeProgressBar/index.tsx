@@ -11,7 +11,7 @@ import InputRange from '../../../../../../components/inputRange';
 
 export interface TimeProgressBarPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    videoRef: any,
+    videoRef: React.RefObject<HTMLVideoElement>,
     videoTime: number,
     currentTime: number,
     setCurrentTime: (time: number) => void;
@@ -27,7 +27,24 @@ export interface Sprite {
     image?: any
 }
 
-const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, currentTime, currentWorkout }: TimeProgressBarPropsType, ref) => {
+export interface TimeProgressBarHandle
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    inputRangeChange: (num: number) => void,
+    inputRangeRefresh: () => void,
+    inputRangeUpdate: () => void,
+    getIsDrag: () => boolean,
+}
+
+const TimeProgressBar = forwardRef((
+    {
+        videoRef,
+        videoTime,
+        setCurrentTime,
+        currentTime,
+        currentWorkout
+    }: TimeProgressBarPropsType,
+    ref: React.Ref<TimeProgressBarHandle>
+) => {
     const inputRangeRef: any = useRef(null);
     const timeProgressbarRef = useRef<HTMLDivElement>(null);
 
@@ -55,6 +72,9 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
         inputRangeUpdate() {
             const progress = currentTime * 100 / (videoTime || 0);
             inputRangeRef.current.setInputValue(progress);
+        },
+        getIsDrag() {
+            return inputRangeRef.current.getIsDrag();
         }
     }));
 
@@ -95,7 +115,7 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
         }
     }
 
-    const onMouseMove = (e: any) => {
+    const onMouseMove = (e: MouseEvent) => {
         if (timeProgressbarRef?.current) {
             const newTime = Dom.getPointerPosition(timeProgressbarRef?.current, e).x * videoTime;
             const totalWidth = timeProgressbarRef.current.getBoundingClientRect().width;
@@ -106,7 +126,7 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
                 setTimeCode(TimeUtils.getTimeCode(newTime))
                 setCanvasCoords(position * 100)
                 captureImage(position * 100)
-                if (inputRangeRef?.current.getIsDrag()) {
+                if (inputRangeRef?.current.getIsDrag() && videoRef.current) {
                     videoRef.current.currentTime = Math.round(newTime);
                     setCurrentTime(Math.round(newTime));
                 }
@@ -114,10 +134,12 @@ const TimeProgressBar = forwardRef(({ videoRef, videoTime, setCurrentTime, curre
         }
     }
 
-    const onMouseClick = (e) => {
-        const newTime = Dom.getPointerPosition(timeProgressbarRef?.current, e).x * videoTime;
-        videoRef.current.currentTime = Math.round(newTime);
-        setCurrentTime(Math.round(newTime));
+    const onMouseClick = (e: MouseEvent) => {
+        if (videoRef.current) {
+            const newTime = Dom.getPointerPosition(timeProgressbarRef?.current, e).x * videoTime;
+            videoRef.current.currentTime = Math.round(newTime);
+            setCurrentTime(Math.round(newTime));
+        }
     }
 
     const onMouseLeave = () => {

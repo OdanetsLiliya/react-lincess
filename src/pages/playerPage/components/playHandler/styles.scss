@@ -20,9 +20,10 @@
   }
 
   .playControlsIcon {
-    width: 100px;
-    height: 100px;
+    width: 64px;
+    height: 64px;
     cursor: pointer;
+    filter: drop-shadow(0px 3px 3px var(--icons-shadow));
   }
 
   @media(max-width: 600px) {

@@ -1,11 +1,11 @@
-import React, { HTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { HTMLAttributes, DetailedHTMLProps, useRef, forwardRef, useImperativeHandle } from 'react';
 
 import './styles.scss';
 
 import BackWard from '../../../../../../assets/images/backward-5.svg';
 import ForWard from '../../../../../../assets/images/forward-5.svg';
-import Pause from '../../../../../../assets/images/pause.svg';
-import Play from '../../../../../../assets/images/play.svg';
+import Pause from '../../../../../../assets/images/pause3.svg';
+import Play from '../../../../../../assets/images/play1.svg';
 // import Prev from '../../../../../../assets/images/prev.svg';
 // import Next from '../../../../../../assets/images/next.svg';
 
@@ -19,11 +19,13 @@ import PipControls from '../pipControls';
 import { Workout } from '../../../../../../types/workoutTypes';
 import { WorkoutType } from '../../../../../../types/workoutTypeTypes';
 
+import { VolumeControlsHandle } from '../volumeControls';
+
 export interface PlayerMenuPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     videoHandler: (control: string) => void,
-    videoRef: any,
-    playerRef: any,
+    videoRef: React.RefObject<HTMLVideoElement>,
+    playerRef: React.RefObject<HTMLDivElement>,
     videoTime: number,
     currentTime: number,
     playing: boolean;
@@ -38,8 +40,13 @@ export interface PlayerMenuPropsType
     refreshTimeProgressBar: () => void,
 }
 
+export interface PlayerButtonsHandle
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    getIsHovered: () => boolean,
+}
+
 // TO DO: think about other controls + menu
-const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
+const PlayerButtons = forwardRef(({
     videoHandler,
     playing,
     videoTime,
@@ -56,16 +63,27 @@ const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
     playerRef,
     revert,
     fastForward,
-}) => {
+}: PlayerMenuPropsType,
+    ref: React.Ref<PlayerButtonsHandle>
+) => {
+    const volumeControlsRef = useRef<VolumeControlsHandle>(null);
 
-    const videoVolumeUpdate = (volume) => {
-        videoRef.current.volume = volume;
+    const videoVolumeUpdate = (volume: number) => {
+        if (videoRef?.current?.volume) {
+            videoRef.current.volume = volume;
+        }
     }
 
     /* const refreshOrChageVideo = () => {
         refreshTimeProgressBar();
         videoHandler("pause");
     } */
+
+    useImperativeHandle(ref, () => ({
+        getIsHovered() {
+            return volumeControlsRef?.current?.getIsHovered() || false;
+        }
+    }));
 
     return (
         <div className="playControlsContainer">
@@ -116,6 +134,7 @@ const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
                 </div>
                 <VolumeControls
                     updateVolume={videoVolumeUpdate}
+                    ref={volumeControlsRef}
                 />
                 <TimeControls
                     videoTime={videoTime}
@@ -141,9 +160,8 @@ const PlayerButtons: React.FC<PlayerMenuPropsType> = ({
                     playerRef={playerRef}
                 />
             </div>
-
         </div>
     );
-};
+});
 
 export default PlayerButtons;
