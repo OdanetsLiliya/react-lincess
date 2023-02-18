@@ -11,6 +11,7 @@ import { appActions } from '../app/actions';
 import {
   UserSignUpType,
 } from '../../types/authTypes';
+import { InferActionsTypes } from '../../Stores';
 
 export function* logIn(payload: {
   type: string,
@@ -78,7 +79,7 @@ export function* logout(payload: {
   try {
     yield put(appActions.openLoader());
     const { id } = payload.payload;
-    const accessToken = yield select(selectors.getAccessToken);
+    const { accessToken } = yield select(selectors.getToken);
     const result = yield call(authApi.logout, id, accessToken);
 
     if ([201, 200].includes(result.status)) {
@@ -101,7 +102,7 @@ export function* getProfile(payload: {
   try {
     yield put(appActions.openLoader());
     const { id } = payload.payload;
-    const accessToken = yield select(selectors.getAccessToken);
+    const { accessToken } = yield select(selectors.getToken);
     const result = yield call(authApi.getUserByID, id, accessToken);
     console.log(result);
     if (result.status === "error") {
@@ -120,7 +121,7 @@ export function* getProfile(payload: {
 export function* refreshToken(payload: {
     type: string;
     payload: {
-      action: any
+      action: InferActionsTypes<any>
     }
 }) {
   try {
@@ -128,7 +129,7 @@ export function* refreshToken(payload: {
     yield put(appActions.setRefreshing(true));
     const { action } = payload.payload;
 
-    const refreshToken = yield select(selectors.getRefreshToken);
+    const { refreshToken } = yield select(selectors.getToken);
     const user = yield select(selectors.getUser);
     const result = yield call(authApi.refreshToken, user.id, refreshToken);
 

@@ -57,7 +57,6 @@ const LoginPage: React.FC = () => {
                         isFormInput={true}
                         placeholder="Enter an email"
                         title="Authorized email"
-                        pattern={{}}
                         autoComplete="on"
                         errorText={errors?.email?.message as string}
                     />
@@ -69,7 +68,6 @@ const LoginPage: React.FC = () => {
                         placeholder="Enter your password"
                         title="Password"
                         type={showPassword ? "text" : "password"}
-                        pattern={{}}
                         autoComplete="on"
                         onClick={() => setShowPassword(!showPassword)}
                         errorText={errors?.password?.message as string}

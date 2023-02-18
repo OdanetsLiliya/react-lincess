@@ -1,4 +1,5 @@
 import React, { HTMLAttributes, DetailedHTMLProps } from 'react';
+import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import './styles.scss';
 
@@ -11,11 +12,11 @@ export interface InputWithIconPropsType
 	setValue?: (value: string) => void;
 	isFormInput?: boolean;
 	title?: string;
-	style?: any;
+	style?: React.CSSProperties;
 	center?: boolean;
 	onClick?: () => void;
-	register?: (label: string, pattern: any) => Object;
-	inputStyle?: any;
+	register?: UseFormRegister<FieldValues>;
+	inputStyle?: React.CSSProperties;
 	multiline?: boolean;
 	onClickOnInput?: () => void;
 	errorText?: string,
@@ -66,7 +67,7 @@ const InputWithIcon: React.FC<InputWithIconPropsType> = ({
 					className="inputWithIcon"
 					placeholder={placeholder}
 					{...customProps}
-					{...register(props.label, { ...props.pattern })}
+					{...register(props.label, {})}
 					style={inputStyle}
 					maxLength={2001}
 					autoComplete={props.autoComplete}
@@ -74,7 +75,7 @@ const InputWithIcon: React.FC<InputWithIconPropsType> = ({
 					className="inputWithIcon"
 					placeholder={placeholder}
 					{...customProps}
-					{...register(props.label, { ...props.pattern })}
+					{...register(props.label, {})}
 					style={inputStyle}
 					onClick={onClickOnInput}
 					autoComplete={props.autoComplete}

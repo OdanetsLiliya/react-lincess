@@ -3,12 +3,12 @@ import React, { useRef, useEffect, useState, forwardRef, useImperativeHandle, HT
 import * as Dom from '../../../../../../utils/dom';
 import * as TimeUtils from '../../../../../../utils/time';
 
-import './styles.scss';
-
 import { Workout } from '../../../../../../types/workoutTypes';
 
 import InputRange from '../../../../../../components/inputRange';
+import { InputRangeHandle } from '../../../../../../components/inputRange';
 
+import './styles.scss';
 export interface TimeProgressBarPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     videoRef: React.RefObject<HTMLVideoElement>,
@@ -23,8 +23,8 @@ export interface Sprite {
     render: () => void,
     width: number,
     height: number,
-    context?: any,
-    image?: any
+    context?: CanvasRenderingContext2D,
+    image: CanvasImageSource
 }
 
 export interface TimeProgressBarHandle
@@ -45,7 +45,7 @@ const TimeProgressBar = forwardRef((
     }: TimeProgressBarPropsType,
     ref: React.Ref<TimeProgressBarHandle>
 ) => {
-    const inputRangeRef: any = useRef(null);
+    const inputRangeRef = useRef<InputRangeHandle>(null);
     const timeProgressbarRef = useRef<HTMLDivElement>(null);
 
     const [showCanvas, setShowCanvas] = useState(false);
@@ -64,31 +64,31 @@ const TimeProgressBar = forwardRef((
         inputRangeChange(valueToAdd: number) {
             const newTime = currentTime + valueToAdd;
             const progress = newTime * 100 / (videoTime || 0);
-            inputRangeRef.current.setInputValue(progress);
+            inputRangeRef?.current?.setInputValue(progress);
         },
         inputRangeRefresh() {
-            inputRangeRef.current.setInputValue(0);
+            inputRangeRef?.current?.setInputValue(0);
         },
         inputRangeUpdate() {
             const progress = currentTime * 100 / (videoTime || 0);
-            inputRangeRef.current.setInputValue(progress);
+            inputRangeRef?.current?.setInputValue(progress);
         },
         getIsDrag() {
-            return inputRangeRef.current.getIsDrag();
+            return inputRangeRef?.current?.getIsDrag() || false;
         }
     }));
 
     const loadSprites = () => {
         if (currentWorkout) {
             let gNOF: number;
-            let canvas: any;
+            let canvas: HTMLCanvasElement;
             let widthOfAllSprites: number;
             let tempThumbsImages = new Image();
 
             tempThumbsImages.src = currentWorkout.sprites_url;
 
             tempThumbsImages.onload = function () {
-                canvas = document.getElementById('canvasID'); // NOTE: Can NOT use jQuery syntax here:  https://stackoverflow.com/questions/4069982/document-getelementbyid-vs-jquery
+                canvas = document.getElementById('canvasID') as HTMLCanvasElement;
                 canvas.width = 133;
                 canvas.height = 75;
                 // @ts-ignore
@@ -98,24 +98,27 @@ const TimeProgressBar = forwardRef((
                 gNOF = widthOfAllSprites / canvas.width;
                 console.log(tempThumbsImages.src + " loaded:  " + width + 'x' + height + " with num-frames=" + gNOF);
 
+                const context = canvas.getContext("2d");
                 // Create sprite
-                let tempTheSpriteItems: Sprite = sprite({
-                    context: canvas.getContext("2d"),
-                    image: tempThumbsImages,
-                    numberOfFrames: gNOF,
-                    width,
-                    height
-                });
+                if (context) {
+                    let tempTheSpriteItems: Sprite = sprite({
+                        context,
+                        image: tempThumbsImages,
+                        numberOfFrames: gNOF,
+                        width,
+                        height
+                    });
 
-                setTheSpriteItems(tempTheSpriteItems);
+                    setTheSpriteItems(tempTheSpriteItems);
 
-                tempTheSpriteItems.render();
-                console.log("%c Trace: exit thumbs-onload function", "color: Black;");
+                    tempTheSpriteItems.render();
+                    console.log("%c Trace: exit thumbs-onload function", "color: Black;");
+                }
             }
         }
     }
 
-    const onMouseMove = (e: MouseEvent) => {
+    const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent) => {
         if (timeProgressbarRef?.current) {
             const newTime = Dom.getPointerPosition(timeProgressbarRef?.current, e).x * videoTime;
             const totalWidth = timeProgressbarRef.current.getBoundingClientRect().width;
@@ -126,7 +129,7 @@ const TimeProgressBar = forwardRef((
                 setTimeCode(TimeUtils.getTimeCode(newTime))
                 setCanvasCoords(position * 100)
                 captureImage(position * 100)
-                if (inputRangeRef?.current.getIsDrag() && videoRef.current) {
+                if (inputRangeRef?.current?.getIsDrag() && videoRef.current) {
                     videoRef.current.currentTime = Math.round(newTime);
                     setCurrentTime(Math.round(newTime));
                 }
@@ -134,7 +137,7 @@ const TimeProgressBar = forwardRef((
         }
     }
 
-    const onMouseClick = (e: MouseEvent) => {
+    const onMouseClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (videoRef.current) {
             const newTime = Dom.getPointerPosition(timeProgressbarRef?.current, e).x * videoTime;
             videoRef.current.currentTime = Math.round(newTime);
@@ -161,8 +164,8 @@ const TimeProgressBar = forwardRef((
     };
 
     function sprite(options: {
-        context: any,
-        image: HTMLImageElement,
+        context: CanvasRenderingContext2D,
+        image: CanvasImageSource,
         numberOfFrames: number,
         width: number,
         height: number,
@@ -187,9 +190,9 @@ const TimeProgressBar = forwardRef((
                 const h_point = Math.floor(frameIndex / total_w_count);
                 const w_point = frameIndex - total_w_count * h_point;
 
-                that.context.clearRect(0, 0, that.width, that.height);
+                that.context?.clearRect(0, 0, that.width, that.height);
                 // Draw the new image
-                that.context.drawImage(
+                that.context?.drawImage(
                     that.image,
                     w_point * that.width / numberOfFrames,
                     that.height * h_point / total_h_count,
@@ -219,7 +222,7 @@ const TimeProgressBar = forwardRef((
             ref={timeProgressbarRef}
         >
             <InputRange
-                onMouseMove={onMouseMove}
+                onMouseMoveHandle={onMouseMove}
                 onClick={onMouseClick}
                 onMouseLeave={onMouseLeave}
                 Child={canvasChild()}

@@ -4,7 +4,7 @@ import * as coachConstants from './constants';
 import { CoachType, CoachesType } from '../../types/coachesTypes';
 
 export const coachesActions = {
-  getCoachesList: (payload: any) =>
+  getCoachesList: (payload: {}) =>
   ({
     type: coachConstants.GET_COACHES_LIST,
     payload,

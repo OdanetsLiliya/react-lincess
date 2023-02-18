@@ -7,7 +7,7 @@ import './styles.scss';
 export interface ArrowPropsType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     disabled: boolean;
-    onClick: (data: any) => void;
+    onClick: () => void;
     left?: boolean
 }
 

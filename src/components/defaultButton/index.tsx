@@ -9,7 +9,7 @@ export interface ButtonPropsType
   onClick?: () => void;
   isDark?: boolean;
   isActive?: boolean;
-  style?: any
+  style?: React.CSSProperties
 }
 
 const DefaultButton: React.FC<ButtonPropsType> = ({

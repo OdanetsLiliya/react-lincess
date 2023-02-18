@@ -12,7 +12,6 @@ export type InitialStateType = {
   },
   workout_types: WorkoutType[];
   detailedWorkout: Workout | {};
-  filterData: any
 };
 
 const initialState = {
@@ -22,7 +21,6 @@ const initialState = {
   },
   workout_types: [],
   detailedWorkout: {},
-  filterData: {}
 };
 
 const workoutReducer = (

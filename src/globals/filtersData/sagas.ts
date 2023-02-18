@@ -11,10 +11,13 @@ import * as authSelectors from '../auth/selectors';
 
 import { getFilterArray } from '../../utils/filters';
 
-export function* getAllFilterData({ payload } : any) {
+export function* getAllFilterData(payload: {
+  type: string,
+  payload: {}
+}) {
   try {
     yield put(appActions.openLoader());
-    const accessToken = yield select(authSelectors.getAccessToken);
+    const { accessToken } = yield select(authSelectors.getToken);
   
     const [coaches, equipment, workoutLevels, types] = yield all([
       call(filtersApi.getCoachesList, accessToken),

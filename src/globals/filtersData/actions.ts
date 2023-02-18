@@ -4,7 +4,7 @@ import * as coachConstants from './constants';
 import { FilterType, UpdateSelectedFiltersType } from '../../types/filterTypes';
 
 export const filterActions = {
-  getEquipment: (payload: any) =>
+  getEquipment: (payload: {}) =>
   ({
     type: coachConstants.GET_EQUIPMENT,
     payload,
@@ -14,7 +14,7 @@ export const filterActions = {
     type: coachConstants.GET_EQUIPMENT_SUCCESS,
     payload,
   }),
-  getWorkoutLevels: (payload : any) =>
+  getWorkoutLevels: (payload : {}) =>
   ({
     type: coachConstants.GET_WORKOUT_LEVELS,
     payload
@@ -24,7 +24,7 @@ export const filterActions = {
     type: coachConstants.GET_WORKOUT_LEVELS_SUCCESS,
     payload
   }),
-  getCoaches: (payload : any) =>
+  getCoaches: (payload : {}) =>
   ({
     type: coachConstants.GET_COACHES_FILTER,
     payload
@@ -34,12 +34,12 @@ export const filterActions = {
     type: coachConstants.GET_COACHES_FILTER_SUCCESS,
     payload
   }),
-  getAllFilterData: (payload : any) =>
+  getAllFilterData: (payload : {}) =>
   ({
     type: coachConstants.GET_ALL_FILTER_DATA,
     payload
   }),
-  getWorkoutTypes: (payload : any) =>
+  getWorkoutTypes: (payload : {}) =>
   ({
     type: coachConstants.GET_WORKOUT_TYPES_FILTER,
     payload

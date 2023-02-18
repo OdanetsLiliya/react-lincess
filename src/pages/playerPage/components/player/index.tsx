@@ -27,7 +27,7 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
                 videoRef.current.play();
                 setPlaying(true);
                 setControlsVisible(false);
-                var vid: any = document.getElementById("video1");
+                const vid = document.getElementById("video1") as HTMLVideoElement | null;
                 if (vid?.duration) {
                     setVideoTime(vid.duration);
                 }

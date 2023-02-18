@@ -38,10 +38,10 @@ const EditAddWorkout = ({
     const dispatch = useDispatch();
 
     const detailedWorkout = useSelector((state: RootStateType) => state.workout?.detailedWorkout);
-    const coachesOptions = useSelector((state: RootStateType) => state.filter?.coaches);
-    const equipmentOptions = useSelector((state: RootStateType) => state.filter?.equipment);
-    const workoutLevelOptions = useSelector((state: RootStateType) => state.filter?.workoutLevels);
-    const workoutTypesOptions = useSelector((state: RootStateType) => state.filter?.workoutTypes);
+    const coachesOptions: FilterType[] = useSelector((state: RootStateType) => state.filter?.coaches);
+    const equipmentOptions: FilterType[] = useSelector((state: RootStateType) => state.filter?.equipment);
+    const workoutLevelOptions: FilterType[] = useSelector((state: RootStateType) => state.filter?.workoutLevels);
+    const workoutTypesOptions: FilterType[] = useSelector((state: RootStateType) => state.filter?.workoutTypes);
 
     const onSubmit = (data: FieldValues) => {
         const equipments: Array<number> = [];
@@ -143,7 +143,6 @@ const EditAddWorkout = ({
                             isFormInput={true}
                             placeholder="Введите название"
                             title="Название"
-                            pattern={{}}
                             autoComplete="off"
                             errorText={errors?.title?.message as string}
                         />
@@ -153,7 +152,6 @@ const EditAddWorkout = ({
                             isFormInput={true}
                             placeholder="Введите описание"
                             title="Описание"
-                            pattern={{}}
                             autoComplete="off"
                             errorText={errors?.description?.message as string}
                         />
@@ -164,7 +162,6 @@ const EditAddWorkout = ({
                                 isFormInput={true}
                                 placeholder="Введите таймкод"
                                 title="Таймкод (значение в секундах)"
-                                pattern={{}}
                                 autoComplete="off"
                                 type='number'
                                 errorText={errors?.previewTimecode?.message as string}
@@ -175,7 +172,6 @@ const EditAddWorkout = ({
                                 isFormInput={true}
                                 placeholder="Введите название видеофайла"
                                 title="Название видеофайла"
-                                pattern={{}}
                                 autoComplete="off"
                                 errorText={errors?.outputFile?.message as string}
                             />
@@ -185,7 +181,6 @@ const EditAddWorkout = ({
                                 isFormInput={true}
                                 placeholder="Введите ссылку на видео файл"
                                 title="Ссылка"
-                                pattern={{}}
                                 autoComplete="off"
                                 errorText={errors?.video_url?.message as string}
                             />

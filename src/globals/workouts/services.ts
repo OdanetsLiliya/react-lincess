@@ -6,7 +6,7 @@ import { CoachType, CoachesType } from '../../types/coachesTypes';
 import { Workout } from '../../types/workoutTypes';
 
 export const workoutsApi = {
-  getWorkoutsList: async (query: any, token: string) => {
+  getWorkoutsList: async (query: string, token: string) => {
     const resp: CoachesType | any = await axios.get(
       `${process.env.REACT_APP_API_URL}/workouts?${query}`,
       setAuthHeader(token)

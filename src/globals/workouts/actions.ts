@@ -2,9 +2,10 @@ import { InferActionsTypes } from '../../Stores';
 import * as coachConstants from './constants';
 
 import { Workout } from '../../types/workoutTypes';
+import { CoachType } from '../../types/coachesTypes';
 
 export const workoutActions = {
-  getWorkoutsList: (payload: any) =>
+  getWorkoutsList: (payload: string) =>
   ({
     type: coachConstants.GET_WORKOUTS_LIST,
     payload,
@@ -39,17 +40,12 @@ export const workoutActions = {
     type: coachConstants.GET_FILTER_DATA,
     payload,
   }),
-  getFilterDataSuccess: (payload: any) =>
-  ({
-    type: coachConstants.GET_FILTER_DATA,
-    payload,
-  }),
   editWorkout: (payload : { id: number | string, data: Workout }) =>
   ({
     type: coachConstants.EDIT_WORKOUT,
     payload,
   }),
-  editWorkoutSuccess: (payload: any) =>
+  editWorkoutSuccess: (payload: CoachType) =>
   ({
     type: coachConstants.EDIT_WORKOUT_SUCCESS,
     payload,

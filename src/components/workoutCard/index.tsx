@@ -11,7 +11,7 @@ import './styles.scss';
 export interface WorkoutCardType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   workout: Workout
-  onClick?: (data: any) => void;
+  onClick?: (data: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
   onFiltersUpdate: () => void;
   isEdit: boolean
 }

@@ -16,7 +16,7 @@ export function* getWorkoutsList(payload: {
 }) {
   try {
     yield put(appActions.openLoader());
-    const accessToken = yield select(authSelectors.getAccessToken);
+    const { accessToken } = yield select(authSelectors.getToken);
   
     const result = yield call(workoutsApi.getWorkoutsList, payload.payload, accessToken);
 
@@ -38,7 +38,7 @@ export function* getWorkoutDetailed(payload: {
 }) {
   try {
     yield put(appActions.openLoader());
-    const accessToken = yield select(authSelectors.getAccessToken);
+    const { accessToken } = yield select(authSelectors.getToken);
 
     const { id } = payload.payload;
   
@@ -62,7 +62,7 @@ export function* getWorkoutTypes(payload: {
 }) {
   try {
     yield put(appActions.openLoader());
-    const accessToken = yield select(authSelectors.getAccessToken);
+    const { accessToken } = yield select(authSelectors.getToken);
 
     const { id } = payload.payload;
   
@@ -86,7 +86,7 @@ export function* getFilterData(payload: {
 }) {
   try {
     yield put(appActions.openLoader());
-    const accessToken = yield select(authSelectors.getAccessToken);
+    const { accessToken } = yield select(authSelectors.getToken);
 
     const { id } = payload.payload;
   
@@ -113,7 +113,7 @@ export function* editWorkout(payload: {
 }) {
   try {
     yield put(appActions.openLoader());
-    const accessToken = yield select(authSelectors.getAccessToken);
+    const { accessToken } = yield select(authSelectors.getToken);
 
     const { id, data } = payload.payload;
 

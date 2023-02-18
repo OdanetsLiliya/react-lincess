@@ -30,7 +30,7 @@ const VolumeControls = forwardRef(({ updateVolume }: VolumeControlsPropsType, re
     const [hoveredOutside, setIsHoveredOutside] = useState(false);
     const [hoveredInside, setIsHoveredInside] = useState(false);
 
-    const onClick = (e: MouseEvent) => {
+    const onClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         const offsetPercent = Dom.getPointerPosition(volumeControlRef?.current, e).x * 100;
         const volume = Number((offsetPercent / 100).toFixed(1))
         updateVolume(volume)
@@ -38,7 +38,7 @@ const VolumeControls = forwardRef(({ updateVolume }: VolumeControlsPropsType, re
         soundProgressBarRef?.current?.setInputValue(volume * 100);
     }
 
-    const onMouseMove = (e: MouseEvent) => {
+    const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         if (soundProgressBarRef?.current?.getIsDrag()) {
             const offsetPercent = Dom.getPointerPosition(volumeControlRef?.current, e).x * 100;
             const volume = Number((offsetPercent / 100).toFixed(1))
@@ -97,7 +97,7 @@ const VolumeControls = forwardRef(({ updateVolume }: VolumeControlsPropsType, re
                 <InputRange
                     ref={soundProgressBarRef}
                     onClick={onClick}
-                    onMouseMove={onMouseMove}
+                    onMouseMoveHandle={onMouseMove}
                     initialState={INITIAL_STATE}
                     setIsHovered={setIsHoveredOutside}
                 />

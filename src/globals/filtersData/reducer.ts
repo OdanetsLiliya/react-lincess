@@ -52,7 +52,6 @@ const filterReducer = (
         workoutTypes: action.payload
       };
     case filterConstants.SELECT_FILTERS:
-      console.log(action)
       return {
         ...state,
         selectedFilters: {
@@ -61,7 +60,6 @@ const filterReducer = (
         }
       };
     case filterConstants.CLEAR_FILTERS:
-      console.log(action)
       return {
         ...state,
         selectedFilters: initialState.selectedFilters

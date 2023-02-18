@@ -1,7 +1,5 @@
 import { RootStateType } from "../../Stores"
 
-export const getAccessToken = (state: RootStateType) => state.auth?.tokens?.accessToken;
-
-export const getRefreshToken = (state: RootStateType) => state.auth?.tokens?.refreshToken;
+export const getToken = (state: RootStateType) => state.auth?.tokens;
 
 export const getUser = (state: RootStateType) => state.auth?.user;

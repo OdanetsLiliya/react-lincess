@@ -1,13 +1,14 @@
 import React, { HTMLAttributes, DetailedHTMLProps } from 'react';
-import Select from 'react-select';
+import Select, { GroupBase, OptionsOrGroups, PropsValue, SingleValue } from 'react-select';
+import { FilterType } from '../../types/filterTypes';
 
 import './styles.scss';
 
 export interface SelectPropsType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  selectedOption: string;
-  handleChange?: (value: any) => void;
-  options: any;
+  selectedOption: PropsValue<string>;
+  handleChange?: (value: SingleValue<FilterType> | any) => void;
+  options: OptionsOrGroups<string, GroupBase<string> | any>;
   title?: string
   errorText?: string
 }

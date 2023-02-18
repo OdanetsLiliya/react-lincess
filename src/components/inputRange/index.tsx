@@ -1,17 +1,16 @@
-import React, { forwardRef, useState, useImperativeHandle, HTMLAttributes, DetailedHTMLProps, useEffect } from 'react';
+import React, { forwardRef, useState, useImperativeHandle, HTMLAttributes, DetailedHTMLProps, useEffect, MouseEventHandler } from 'react';
 
 import './styles.scss';
 export interface InputRangePropsType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   Child?: React.ReactNode;
-  onMouseMove?: (e: any) => void,
-  onClick: (e: any) => void,
-  onMouseLeave?: (e: any) => void,
+  onMouseMoveHandle: (e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent) => void;
+  onClick: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
+  onMouseLeave?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void,
   initialState?: number
   max?: number,
   setIsHovered?: (value: boolean) => void;
 }
-
 export interface InputRangeHandle
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   setInputValue: (e: number) => void,
@@ -20,7 +19,7 @@ export interface InputRangeHandle
 
 const InputRange = forwardRef(({
   Child,
-  onMouseMove,
+  onMouseMoveHandle,
   onClick,
   onMouseLeave,
   initialState,
@@ -41,27 +40,27 @@ const InputRange = forwardRef(({
     }
   }));
 
-  const onMouseLeaveRange = (e) => {
+  const onMouseLeaveRange = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (onMouseLeave) {
       onMouseLeave(e);
     }
   }
 
-  const onMouseMoveRange = (e) => {
-    if (onMouseMove) {
-      onMouseMove(e);
+  const onMouseMoveRange = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (onMouseMoveHandle) {
+      onMouseMoveHandle(e);
     }
   }
 
-  const onMouseUp = (event) => {
-    document.removeEventListener("mousemove", onMouseMove);
+  const onMouseUp = () => {
+    document.removeEventListener("mousemove", onMouseMoveHandle);
     document.removeEventListener("mouseup", onMouseUp);
     setDragging(false);
     setIsHovered(false);
   };
 
-  const onMouseDown = (event) => {
-    document.addEventListener("mousemove", onMouseMove);
+  const onMouseDown = () => {
+    document.addEventListener("mousemove", onMouseMoveHandle);
     document.addEventListener("mouseup", onMouseUp);
     setDragging(true);
     setIsHovered(true);
@@ -69,7 +68,7 @@ const InputRange = forwardRef(({
 
   useEffect(() => {
     return () => {
-      document.removeEventListener("mousemove", () => onMouseMove);
+      document.removeEventListener("mousemove", onMouseMoveHandle);
       document.removeEventListener("mouseup", onMouseUp);
     };
   }, []);

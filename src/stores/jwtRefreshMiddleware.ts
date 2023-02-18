@@ -20,7 +20,7 @@ const jwtRefreshMiddleware = ({ dispatch, getState }) => {
                 const accessExpiryDate = getState().auth.tokens?.accessExpiryDate;
                 const refreshing = getState().app.refreshing;
                 if (accessExpiryDate && moment(accessExpiryDate).diff(moment(), 'minutes') < 1 && !refreshing) {
-                    return dispatch(authActions.refreshToken({ onNextReq: () => next(action), action }))
+                    return dispatch(authActions.refreshToken({ action }))
                 }
             }
             return next(action);
