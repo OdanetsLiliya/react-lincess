@@ -9,52 +9,52 @@ export const filterActions = {
     type: coachConstants.GET_EQUIPMENT,
     payload,
   }),
-  getEquipmentSuccess: (payload : FilterType[]) =>
+  getEquipmentSuccess: (payload: FilterType[]) =>
   ({
     type: coachConstants.GET_EQUIPMENT_SUCCESS,
     payload,
   }),
-  getWorkoutLevels: (payload : {}) =>
+  getWorkoutLevels: (payload: {}) =>
   ({
     type: coachConstants.GET_WORKOUT_LEVELS,
     payload
   }),
-  getWorkoutLevelsSuccess: (payload : FilterType[]) =>
+  getWorkoutLevelsSuccess: (payload: FilterType[]) =>
   ({
     type: coachConstants.GET_WORKOUT_LEVELS_SUCCESS,
     payload
   }),
-  getCoaches: (payload : {}) =>
+  getCoaches: (payload: {}) =>
   ({
     type: coachConstants.GET_COACHES_FILTER,
     payload
   }),
-  getCoachesSuccess: (payload : FilterType[]) =>
+  getCoachesSuccess: (payload: FilterType[]) =>
   ({
     type: coachConstants.GET_COACHES_FILTER_SUCCESS,
     payload
   }),
-  getAllFilterData: (payload : {}) =>
+  getAllFilterData: (payload: {}) =>
   ({
     type: coachConstants.GET_ALL_FILTER_DATA,
     payload
   }),
-  getWorkoutTypes: (payload : {}) =>
+  getWorkoutTypes: (payload: {}) =>
   ({
     type: coachConstants.GET_WORKOUT_TYPES_FILTER,
     payload
   }),
-  getWorkoutTypesSuccess: (payload : FilterType[]) =>
+  getWorkoutTypesSuccess: (payload: FilterType[]) =>
   ({
     type: coachConstants.GET_WORKOUT_TYPES_FILTER_SUCCESS,
     payload
   }),
-  selectFilters: (payload : UpdateSelectedFiltersType) =>
+  selectFilters: (payload: UpdateSelectedFiltersType) =>
   ({
     type: coachConstants.SELECT_FILTERS,
     payload
   }),
-  clearFilters: (payload : null) =>
+  clearFilters: (payload: null) =>
   ({
     type: coachConstants.CLEAR_FILTERS,
     payload

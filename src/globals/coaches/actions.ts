@@ -9,17 +9,17 @@ export const coachesActions = {
     type: coachConstants.GET_COACHES_LIST,
     payload,
   }),
-  getCoachesListSuccess: (payload : CoachesType) =>
+  getCoachesListSuccess: (payload: CoachesType) =>
   ({
     type: coachConstants.GET_COACHES_LIST_SUCCESS,
     payload,
   }),
-  getCoachDetailed: (payload : { id: number | string }) =>
+  getCoachDetailed: (payload: { id: number | string }) =>
   ({
     type: coachConstants.GET_DETAILED_COACH,
     payload
   }),
-  getCoachDetailedSuccess: (payload : CoachType) =>
+  getCoachDetailedSuccess: (payload: CoachType) =>
   ({
     type: coachConstants.GET_DETAILED_COACH_SUCCESS,
     payload

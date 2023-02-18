@@ -19,22 +19,15 @@ export function* logIn(payload: {
 }) {
   try {
     yield put(appActions.openLoader());
-    const user : UserSignUpType  = payload.payload;
+    const user: UserSignUpType = payload.payload;
 
-    const result  = yield call(
+    const result = yield call(
       authApi.logIn,
       { user }
     );
 
-    if ([201, 200].includes(result.status)) {
-      yield put(authActions.logInSignUpSuccess(result.data));
-      yield put(appActions.setRoute('/workouts'));
-    } else {
-      yield put(appActions.setMessage({
-        message: result.data.message,
-        isShowMessage: true
-      }));
-    }
+    yield put(authActions.logInSignUpSuccess(result));
+    yield put(appActions.setRoute('/workouts'));
     yield put(appActions.closeLoader());
   } catch (e) {
     yield put(appActions.setMessage({
@@ -44,25 +37,22 @@ export function* logIn(payload: {
     yield put(appActions.closeLoader());
   }
 }
-export function* signUp(payload: { 
+export function* signUp(payload: {
   type: string,
   payload: UserSignUpType
 }) {
   try {
     yield put(appActions.openLoader());
-    const user : UserSignUpType  = payload.payload;
+    const user: UserSignUpType = payload.payload;
 
     const result = yield call(
       authApi.signUp,
       { user }
     );
 
-    if ([201, 200].includes(result.status)) {
-      yield put(authActions.logInSignUpSuccess(result.data));
-      yield put(appActions.setRoute('/workouts'));
-    } else {
-      
-    }
+    yield put(authActions.logInSignUpSuccess(result));
+    yield put(appActions.setRoute('/workouts'));
+
 
     yield put(appActions.closeLoader());
   } catch (e) {
@@ -80,15 +70,15 @@ export function* logout(payload: {
     yield put(appActions.openLoader());
     const { id } = payload.payload;
     const { accessToken } = yield select(selectors.getToken);
-    const result = yield call(authApi.logout, id, accessToken);
 
-    if ([201, 200].includes(result.status)) {
-      yield put(authActions.logoutSuccess());
-      yield put(appActions.setRoute('/login'));
-    }
+    yield call(authApi.logout, id, accessToken);
+    
+    yield put(authActions.logoutSuccess());
+    yield put(appActions.setRoute('/login'));
     yield put(appActions.closeLoader());
   } catch (e) {
-    console.log(e)
+    yield put(authActions.logoutSuccess());
+    yield put(appActions.setRoute('/login'));
     yield put(appActions.closeLoader());
   }
 }
@@ -104,14 +94,8 @@ export function* getProfile(payload: {
     const { id } = payload.payload;
     const { accessToken } = yield select(selectors.getToken);
     const result = yield call(authApi.getUserByID, id, accessToken);
-    console.log(result);
-    if (result.status === "error") {
-      yield put(authActions.logoutSuccess());
-      yield put(appActions.setRoute('/login'));
-    } else {
-      yield put(authActions.getProfileSuccess(result.data));
-      yield put(appActions.setRoute('/login'));
-    }
+    
+    yield put(authActions.getProfileSuccess(result));
     yield put(appActions.closeLoader());
   } catch (e) {
     yield put(appActions.closeLoader());
@@ -119,10 +103,10 @@ export function* getProfile(payload: {
 }
 
 export function* refreshToken(payload: {
-    type: string;
-    payload: {
-      action: InferActionsTypes<any>
-    }
+  type: string;
+  payload: {
+    action: InferActionsTypes<any>
+  }
 }) {
   try {
     yield put(appActions.openLoader());
@@ -133,13 +117,8 @@ export function* refreshToken(payload: {
     const user = yield select(selectors.getUser);
     const result = yield call(authApi.refreshToken, user.id, refreshToken);
 
-    if ([201, 200].includes(result.status)) {
-      yield put(authActions.refreshTokenSuccess(result.data));
-      yield put(action)
-    } else {
-      yield put(authActions.logoutSuccess());
-      yield put(appActions.setRoute('/login'));
-    }
+    yield put(authActions.refreshTokenSuccess(result));
+    yield put(action)
     yield put(appActions.closeLoader());
     yield put(appActions.setRefreshing(false));
   } catch (e) {

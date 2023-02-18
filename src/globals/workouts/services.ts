@@ -7,32 +7,32 @@ import { Workout } from '../../types/workoutTypes';
 
 export const workoutsApi = {
   getWorkoutsList: async (query: string, token: string) => {
-    const resp: CoachesType | any = await axios.get(
+    const resp = await axios.get<CoachesType>(
       `${process.env.REACT_APP_API_URL}/workouts?${query}`,
       setAuthHeader(token)
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
-  getWorkoutById: async (id : string | number, token: string) => {
-    const resp : CoachType | any = await axios.get(
+  getWorkoutById: async (id: string | number, token: string) => {
+    const resp = await axios.get<CoachType>(
       `${process.env.REACT_APP_API_URL}/workouts/${id}`,
       setAuthHeader(token)
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
-  getWorkoutTypes: async (id : string | number, token: string) => {
-    const resp : CoachType | any = await axios.get(
+  getWorkoutTypes: async (id: string | number, token: string) => {
+    const resp = await axios.get<CoachType>(
       `${process.env.REACT_APP_API_URL}/workout-types?coach=${id}`,
       setAuthHeader(token)
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
-  editWorkout: async (id : string | number, data: Workout, token: string) => {
-    const resp : CoachType | any = await axios.put(
+  editWorkout: async (id: string | number, data: Workout, token: string) => {
+    const resp = await axios.put<CoachType>(
       `${process.env.REACT_APP_API_URL}/workouts/${id}`,
       data,
       setAuthHeader(token)
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
 };

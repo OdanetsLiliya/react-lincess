@@ -18,7 +18,7 @@ export function* getAllFilterData(payload: {
   try {
     yield put(appActions.openLoader());
     const { accessToken } = yield select(authSelectors.getToken);
-  
+
     const [coaches, equipment, workoutLevels, types] = yield all([
       call(filtersApi.getCoachesList, accessToken),
       call(filtersApi.getEquipmentList, accessToken),
@@ -26,16 +26,11 @@ export function* getAllFilterData(payload: {
       call(filtersApi.getWorkoutTypes, accessToken),
     ])
     
-    if ([201, 200].includes(coaches.status)
-    && [201, 200].includes(equipment.status)
-    && [201, 200].includes(workoutLevels.status)
-    && [201, 200].includes(types.status)
-    ) {
-      yield put(filterActions.getCoachesSuccess(getFilterArray(coaches.data.items)));
-      yield put(filterActions.getEquipmentSuccess(getFilterArray(equipment.data)));
-      yield put(filterActions.getWorkoutLevelsSuccess(getFilterArray(workoutLevels.data)));
-      yield put(filterActions.getWorkoutTypesSuccess(getFilterArray(types.data)));      
-    } 
+    yield put(filterActions.getCoachesSuccess(getFilterArray(coaches)));
+    yield put(filterActions.getEquipmentSuccess(getFilterArray(equipment)));
+    yield put(filterActions.getWorkoutLevelsSuccess(getFilterArray(workoutLevels)));
+    yield put(filterActions.getWorkoutTypesSuccess(getFilterArray(types)));
+
 
     yield put(appActions.closeLoader());
   } catch (e) {

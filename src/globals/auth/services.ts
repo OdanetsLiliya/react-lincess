@@ -10,38 +10,38 @@ import {
 
 export const authApi = {
   logIn: async (payload: { user: UserSignUpType }) => {
-    const resp : { user: UserSignUpResponseType, tokens:TokensType } | any = await axios.post(
+    const resp = await axios.post<{ user: UserSignUpResponseType, tokens: TokensType }>(
       `${process.env.REACT_APP_API_URL}/auth/login`,
       payload
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
   signUp: async (payload: { user: UserSignUpType }) => {
-    const resp : { user: UserSignUpResponseType, tokens:TokensType } | any  = await axios.post(
+    const resp = await axios.post<{ user: UserSignUpResponseType, tokens: TokensType }>(
       `${process.env.REACT_APP_API_URL}/auth/register`,
       payload
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
-  refreshToken: async (id: string | number, token : string) => {
-    const resp : TokensType | any = await axios.get(
+  refreshToken: async (id: string | number, token: string) => {
+    const resp = await axios.get<TokensType>(
       `${process.env.REACT_APP_API_URL}/refresh/${id}`,
       setAuthHeader(token)
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
-  logout: async (id: string | number, token : string) => {
-    const resp : any = await axios.get(
+  logout: async (id: string | number, token: string) => {
+    const resp = await axios.get<{ status: string }>(
       `${process.env.REACT_APP_API_URL}/auth/logout/${id}`,
       setAuthHeader(token)
     );
-    return resp?.response || resp;
+    return resp?.data;
   },
-  getUserByID: async (id: string | number, token : string) => {
-    const resp : UserSignUpResponseType | any = await axios.get(
-      `${process.env.REACT_APP_API_URL}users/${id}`,
+  getUserByID: async (id: string | number, token: string) => {
+    const resp = await axios.get<UserSignUpResponseType>(
+      `${process.env.REACT_APP_API_URL}/users/${id}`,
       setAuthHeader(token)
     );
-    return resp.data;
+    return resp?.data;
   },
 };
