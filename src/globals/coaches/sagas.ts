@@ -8,6 +8,7 @@ import { coachesActions } from './actions';
 import { appActions } from '../app/actions';
 
 import * as authSelectors from '../auth/selectors';
+import { CoachesType, CoachType } from '../../types/coachesTypes';
 
 export function* getCoachesList(payload: {
   type: string,
@@ -17,7 +18,7 @@ export function* getCoachesList(payload: {
     yield put(appActions.openLoader());
     const { accessToken } = yield select(authSelectors.getToken);
 
-    const result = yield call(coachesApi.getCoachesList, '', accessToken);
+    const result: CoachesType = yield call(coachesApi.getCoachesList, '', accessToken);
 
     yield put(coachesActions.getCoachesListSuccess(result));
     yield put(appActions.closeLoader());
@@ -38,7 +39,7 @@ export function* getCoach(payload: {
 
     const { id } = payload.payload;
 
-    const result = yield call(coachesApi.getCoach, id, accessToken);
+    const result: CoachType = yield call(coachesApi.getCoach, id, accessToken);
 
     yield put(coachesActions.getCoachDetailedSuccess(result));
     yield put(appActions.closeLoader());

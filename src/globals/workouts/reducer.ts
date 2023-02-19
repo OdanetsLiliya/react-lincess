@@ -10,7 +10,6 @@ export type InitialStateType = {
     items: Workout[],
     count: number
   },
-  workout_types: Array<WorkoutType>;
   detailedWorkout: Workout;
 };
 
@@ -19,7 +18,6 @@ const initialState = {
     items: [] as Workout[],
     count: 0
   },
-  workout_types: [] as Array<WorkoutType>,
   detailedWorkout: {} as Workout,
 };
 
@@ -40,11 +38,6 @@ const workoutReducer = (
       return {
         ...state,
         detailedWorkout: action.payload as Workout
-      };
-    case workoutConstants.GET_WORKOUT_TYPES_SUCCESS:
-      return {
-        ...state,
-        workout_types: action.payload as WorkoutType[]
       };
     default:
       return state;

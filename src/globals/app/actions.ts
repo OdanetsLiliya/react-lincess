@@ -1,4 +1,4 @@
-import { InferActionsTypes } from '../../Stores';
+import { InferActionsTypes } from '../../stores';
 
 import * as appConstants from './constants';
 

@@ -9,9 +9,12 @@ import { authActions } from './actions';
 import { appActions } from '../app/actions';
 
 import {
+  TokensType,
+  UserSignUpResponseType,
   UserSignUpType,
+  UserType,
 } from '../../types/authTypes';
-import { InferActionsTypes } from '../../Stores';
+import { InferActionsTypes } from '../../stores';
 
 export function* logIn(payload: {
   type: string,
@@ -21,7 +24,7 @@ export function* logIn(payload: {
     yield put(appActions.openLoader());
     const user: UserSignUpType = payload.payload;
 
-    const result = yield call(
+    const result: { user: UserSignUpResponseType, tokens: TokensType } = yield call(
       authApi.logIn,
       { user }
     );
@@ -29,7 +32,7 @@ export function* logIn(payload: {
     yield put(authActions.logInSignUpSuccess(result));
     yield put(appActions.setRoute('/workouts'));
     yield put(appActions.closeLoader());
-  } catch (e) {
+  } catch (e: any) {
     yield put(appActions.setMessage({
       message: e.response.data.message,
       isShowMessage: true
@@ -45,7 +48,7 @@ export function* signUp(payload: {
     yield put(appActions.openLoader());
     const user: UserSignUpType = payload.payload;
 
-    const result = yield call(
+    const result: { user: UserSignUpResponseType, tokens: TokensType } = yield call(
       authApi.signUp,
       { user }
     );
@@ -72,7 +75,7 @@ export function* logout(payload: {
     const { accessToken } = yield select(selectors.getToken);
 
     yield call(authApi.logout, id, accessToken);
-    
+
     yield put(authActions.logoutSuccess());
     yield put(appActions.setRoute('/login'));
     yield put(appActions.closeLoader());
@@ -93,8 +96,8 @@ export function* getProfile(payload: {
     yield put(appActions.openLoader());
     const { id } = payload.payload;
     const { accessToken } = yield select(selectors.getToken);
-    const result = yield call(authApi.getUserByID, id, accessToken);
-    
+    const result: UserSignUpResponseType = yield call(authApi.getUserByID, id, accessToken);
+
     yield put(authActions.getProfileSuccess(result));
     yield put(appActions.closeLoader());
   } catch (e) {
@@ -114,15 +117,14 @@ export function* refreshToken(payload: {
     const { action } = payload.payload;
 
     const { refreshToken } = yield select(selectors.getToken);
-    const user = yield select(selectors.getUser);
-    const result = yield call(authApi.refreshToken, user.id, refreshToken);
+    const user: UserType = yield select(selectors.getUser);
+    const result: TokensType = yield call(authApi.refreshToken, user.id, refreshToken);
 
     yield put(authActions.refreshTokenSuccess(result));
     yield put(action)
     yield put(appActions.closeLoader());
     yield put(appActions.setRefreshing(false));
   } catch (e) {
-    console.log(e)
     yield put(authActions.logoutSuccess());
     yield put(appActions.setRoute('/login'));
     yield put(appActions.closeLoader());

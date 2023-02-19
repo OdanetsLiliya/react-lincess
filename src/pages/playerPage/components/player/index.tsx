@@ -7,8 +7,9 @@ import PlayerMenu from '../playerMenu';
 import TopPlayerMenu from '../topPlayerMenu';
 import ReactHlsPlayer from '../reactHlsPlayer';
 import PlayerLoader from '../playerLoader';
+import { Workout } from '../../../../types/workoutTypes';
 
-const Player = ({ detailedWorkout, isSmall = false }) => {
+const Player = ({ detailedWorkout, isSmall = false }: { detailedWorkout: Workout, isSmall?: boolean }) => {
     const videoRef = useRef<HTMLVideoElement>(null);
     const playerRef = useRef<HTMLDivElement>(null);
 
@@ -71,8 +72,7 @@ const Player = ({ detailedWorkout, isSmall = false }) => {
     }, [detailedWorkout]) */
 
     useEffect(() => {
-        const keyBoardListenerFunc = (e) => {
-            console.log(e.key, e.code)
+        const keyBoardListenerFunc = (e: KeyboardEvent) => {
             if (e.code === 'Space') {
                 videoHandler(playing ? "pause" : "play")
             }

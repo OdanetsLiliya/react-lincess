@@ -9,6 +9,7 @@ import { appActions } from '../app/actions';
 
 import * as authSelectors from '../auth/selectors';
 import { Workout } from '../../types/workoutTypes';
+import { CoachesType } from '../../types/coachesTypes';
 
 export function* getWorkoutsList(payload: {
   type: string,
@@ -18,7 +19,10 @@ export function* getWorkoutsList(payload: {
     yield put(appActions.openLoader());
     const { accessToken } = yield select(authSelectors.getToken);
 
-    const result = yield call(workoutsApi.getWorkoutsList, payload.payload, accessToken);
+    const result: {
+      items: Workout[],
+      count: number
+    } = yield call(workoutsApi.getWorkoutsList, payload.payload, accessToken);
 
     yield put(workoutActions.getWorkoutsListSuccess(result));
 
@@ -40,53 +44,10 @@ export function* getWorkoutDetailed(payload: {
 
     const { id } = payload.payload;
 
-    const result = yield call(workoutsApi.getWorkoutById, id, accessToken);
+    const result: Workout = yield call(workoutsApi.getWorkoutById, id, accessToken);
 
     yield put(workoutActions.getDetailedWorkoutSuccess(result));
 
-    yield put(appActions.closeLoader());
-  } catch (e) {
-    yield put(appActions.closeLoader());
-  }
-}
-
-export function* getWorkoutTypes(payload: {
-  type: string,
-  payload: {
-    id: string
-  }
-}) {
-  try {
-    yield put(appActions.openLoader());
-    const { accessToken } = yield select(authSelectors.getToken);
-
-    const { id } = payload.payload;
-
-    const result = yield call(workoutsApi.getWorkoutTypes, id, accessToken);
-
-    yield put(workoutActions.getWorkoutTypesSuccess(result));
-
-    yield put(appActions.closeLoader());
-  } catch (e) {
-    yield put(appActions.closeLoader());
-  }
-}
-
-export function* getFilterData(payload: {
-  type: string,
-  payload: {
-    id: string
-  }
-}) {
-  try {
-    yield put(appActions.openLoader());
-    const { accessToken } = yield select(authSelectors.getToken);
-
-    const { id } = payload.payload;
-
-    const result = yield call(workoutsApi.getWorkoutTypes, id, accessToken);
-
-    yield put(workoutActions.getWorkoutTypesSuccess(result));
     yield put(appActions.closeLoader());
   } catch (e) {
     yield put(appActions.closeLoader());
@@ -105,7 +66,7 @@ export function* editWorkout(payload: {
     const { accessToken } = yield select(authSelectors.getToken);
     const { id, data } = payload.payload;
 
-    const result = yield call(workoutsApi.editWorkout, id, data, accessToken);
+    const result: Workout = yield call(workoutsApi.editWorkout, id, data, accessToken);
 
     yield put(workoutActions.editWorkoutSuccess(result));
     yield put(appActions.setRoute('/workouts'));
@@ -118,7 +79,5 @@ export function* editWorkout(payload: {
 export default function* WatcherSaga() {
   yield takeLatest(coachConstants.GET_WORKOUTS_LIST, getWorkoutsList);
   yield takeLatest(coachConstants.GET_WORKOUT_BY_ID, getWorkoutDetailed);
-  yield takeLatest(coachConstants.GET_WORKOUT_TYPES, getWorkoutTypes);
-  yield takeLatest(coachConstants.GET_FILTER_DATA, getFilterData);
   yield takeLatest(coachConstants.EDIT_WORKOUT, editWorkout);
 }

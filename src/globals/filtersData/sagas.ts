@@ -10,6 +10,8 @@ import { appActions } from '../app/actions';
 import * as authSelectors from '../auth/selectors';
 
 import { getFilterArray } from '../../utils/filters';
+import { CoachesType } from '../../types/coachesTypes';
+import { FilterCommonType } from '../../types/filterTypes';
 
 export function* getAllFilterData(payload: {
   type: string,
@@ -19,7 +21,7 @@ export function* getAllFilterData(payload: {
     yield put(appActions.openLoader());
     const { accessToken } = yield select(authSelectors.getToken);
 
-    const [coaches, equipment, workoutLevels, types] = yield all([
+    const [coaches, equipment, workoutLevels, types]: [CoachesType, Array<FilterCommonType>, Array<FilterCommonType>, Array<FilterCommonType>] = yield all([
       call(filtersApi.getCoachesList, accessToken),
       call(filtersApi.getEquipmentList, accessToken),
       call(filtersApi.getWorkoutLevelsList, accessToken),

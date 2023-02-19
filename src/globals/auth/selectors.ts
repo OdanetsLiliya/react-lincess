@@ -1,4 +1,4 @@
-import { RootStateType } from "../../Stores"
+import { RootStateType } from "../../stores"
 
 export const getToken = (state: RootStateType) => state.auth?.tokens;
 

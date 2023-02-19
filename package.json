@@ -178,6 +178,7 @@
     ]
   },
   "devDependencies": {
+    "@types/dompurify": "^2.4.0",
     "@types/react": "^18.0.25"
   }
 }

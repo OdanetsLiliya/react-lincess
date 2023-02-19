@@ -1,4 +1,4 @@
-import { InferActionsTypes } from '../../Stores';
+import { InferActionsTypes } from '../../stores';
 import * as coachConstants from './constants';
 
 import { CoachType, CoachesType } from '../../types/coachesTypes';
