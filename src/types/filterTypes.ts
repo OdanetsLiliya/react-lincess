@@ -11,18 +11,18 @@ export type FilterCommonType = {
 };
 
 export type SelectedFiltersType = {
-    levels:  DictType,
+    levels: DictType,
     equipments: DictType,
     workoutTypes: DictType,
-    page: number, 
+    page: number,
     take: number;
 }
 
 export type UpdateSelectedFiltersType = {
-    levels?:  DictType,
+    levels?: DictType,
     equipments?: DictType,
     workoutTypes?: DictType,
-    page?: number, 
+    page?: number,
     take?: number;
 }
 

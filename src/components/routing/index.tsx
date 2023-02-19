@@ -90,7 +90,7 @@ const Routing: React.FC<RoutingType> = ({ isNavbarRendering }) => {
             {...routeParams}
             key={routeParams.path}
             element={<RequireAdmin userRole={user?.role}
-            Component={Component} />}
+              Component={Component} />}
           />)}
         {publicRoutes.map(({ Component, ...routeParams }) =>
           <Route

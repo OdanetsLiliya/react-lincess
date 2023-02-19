@@ -27,6 +27,7 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
   const workouts = useSelector((state: RootStateType) => state.workout?.workouts);
   const user = useSelector((state: RootStateType) => state.auth?.user);
   const selectedFilters = useSelector((state: RootStateType) => state.filter?.selectedFilters);
+  const equipmentOptions = useSelector((state: RootStateType) => state.filter?.equipment);
 
   const take = selectedFilters.take || 12;
   const [workoutTypeFilters, setWorkoutTypeFilters] = useState<DictType>(selectedFilters.workoutTypes);
@@ -49,15 +50,25 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
     navigate(`/workout-player/${id}`);
   }
 
-  const convertCheckBoxFilterToQuery = (queryName: string, filters: DictType) => {
+  const convertCheckBoxFilterToQuery = (queryName: string, filters: DictType, isEquipment = false) => {
     let queryToAdd = '';
-    if (Object.keys(filters).length) {
+    if (Object.keys(filters).length && !isEquipment) {
       Object.keys(filters).forEach((key) => {
         const filter = filters[key];
         if (filter) {
           queryToAdd += `&${queryName}=${key}`
         }
       })
+    } else if (Object.keys(filters).length) {
+      const notSelected = Object.keys(filters).filter(key => !filters[key]);
+      const emptySelect = notSelected.length === Object.keys(filters).length;
+      if (!emptySelect) {
+        equipmentOptions.forEach((eq) => {
+          if (!filters[eq.value]) {
+            queryToAdd += `&${queryName}=${eq.value}`
+          }
+        })
+      }
     }
     return queryToAdd;
   }
@@ -66,7 +77,7 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
     let filter_query = '';
     filter_query += convertCheckBoxFilterToQuery('workout_type', workoutTypeFilters);
     filter_query += convertCheckBoxFilterToQuery('level', levelFilters);
-    filter_query += convertCheckBoxFilterToQuery('equipments', equipmentFilters);
+    filter_query += convertCheckBoxFilterToQuery('equipments', equipmentFilters, true);
     return filter_query;
   }
 
@@ -114,7 +125,7 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
               workout={data}
               key={idx}
               onClick={() => {
-                if(data.id) {
+                if (data.id) {
                   onSelectWorkout(data.id)
                 }
               }}

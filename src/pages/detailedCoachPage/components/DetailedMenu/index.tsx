@@ -31,32 +31,32 @@ const DetailedMenu: React.FC<DetailedMenuPropsType> = ({
     menuInfo.map((item) => (
       <div className="buttonMenu" key={item.value}>
         <Link to={`?tab=${item.value}`}>
-        <DefaultButton
-          title={item.title}
-          isDark={item.value !== (query?.tab || INITIAL_ACTIVE_KEY)}
-          isActive={item.value === (query?.tab || INITIAL_ACTIVE_KEY)} />
+          <DefaultButton
+            title={item.title}
+            isDark={item.value !== (query?.tab || INITIAL_ACTIVE_KEY)}
+            isActive={item.value === (query?.tab || INITIAL_ACTIVE_KEY)} />
         </Link>
       </div>
     ))
   );
 
   return (
-     
-      <div
-        className={classNames("coachTitleMenu", {
-          animateTitleMenu: INITIAL_ACTIVE_KEY !== (query?.tab || INITIAL_ACTIVE_KEY),
-          animateTitleMenuInit: INITIAL_ACTIVE_KEY === (query?.tab || INITIAL_ACTIVE_KEY),
-        })}
-      >
-       <div className="coachTitleContainer">
-          <div className="coachTitle">
-             {title}
-          </div>
+
+    <div
+      className={classNames("coachTitleMenu", {
+        animateTitleMenu: INITIAL_ACTIVE_KEY !== (query?.tab || INITIAL_ACTIVE_KEY),
+        animateTitleMenuInit: INITIAL_ACTIVE_KEY === (query?.tab || INITIAL_ACTIVE_KEY),
+      })}
+    >
+      <div className="coachTitleContainer">
+        <div className="coachTitle">
+          {title}
         </div>
-        <div className="coachMenuContainer">
-          {renderMenu()}
-        </div>
-      </div> 
+      </div>
+      <div className="coachMenuContainer">
+        {renderMenu()}
+      </div>
+    </div>
   );
 }
 

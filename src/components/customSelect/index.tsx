@@ -3,7 +3,6 @@ import Select, { GroupBase, OptionsOrGroups, PropsValue, SingleValue } from 'rea
 import { FilterType } from '../../types/filterTypes';
 
 import './styles.scss';
-
 export interface SelectPropsType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
   selectedOption: PropsValue<string>;
@@ -14,11 +13,11 @@ export interface SelectPropsType
 }
 
 const CustomSelect: React.FC<SelectPropsType> = ({
-    selectedOption,
-    handleChange,
-    options,
-    title,
-    errorText
+  selectedOption,
+  handleChange,
+  options,
+  title,
+  errorText
 }) => {
   return (
     <div>
@@ -42,7 +41,7 @@ const CustomSelect: React.FC<SelectPropsType> = ({
       />
       <div className="inpuErrorTitle">{errorText}</div>
     </div>
-    );
+  );
 }
 
 export default CustomSelect;

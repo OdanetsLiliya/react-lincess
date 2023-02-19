@@ -29,16 +29,16 @@
 }
 
 .workoutCardDescription {
-   overflow: hidden;
-   text-overflow: ellipsis;
-   display: -webkit-box;
-   -webkit-line-clamp: 4; /* number of lines to show */
-           line-clamp: 4; 
-   -webkit-box-orient: vertical;
-   font-size: 12px;
-   text-align: start;
-   color: var(--white);
-   font-weight: 500;
-   font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    font-size: 12px;
+    text-align: start;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 14px;
     font-family: "Gill Sans", sans-serif;
 }

@@ -5,9 +5,9 @@ import './styles.scss';
 import { WorkoutType } from '../../../../../../types/workoutTypeTypes';
 
 export interface PlayerWorkoutsMenuHeaderPropsType
-    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    changeWorkoutTypesVisibility: (value: boolean) => void
-    workoutType: WorkoutType;
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  changeWorkoutTypesVisibility: (value: boolean) => void
+  workoutType: WorkoutType;
 }
 
 const PlayerWorkoutsMenuHeader: React.FC<PlayerWorkoutsMenuHeaderPropsType> = ({

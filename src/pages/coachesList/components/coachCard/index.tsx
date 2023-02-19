@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import './styles.scss';
 
 export interface CoachCardPropsType
-	extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-	title: string;
-	image_url: string;
-	coachId: number;
+  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+  title: string;
+  image_url: string;
+  coachId: number;
 }
 
-const CoachCard : React.FC<CoachCardPropsType> = ({
+const CoachCard: React.FC<CoachCardPropsType> = ({
   title, image_url, coachId
 }) => {
   const navigate = useNavigate();

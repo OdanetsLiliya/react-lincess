@@ -21,8 +21,8 @@ const reducer = persistReducer<RootStateType>(
 
 
 
-type PropertyTypes<T> = T extends {[key: string]: infer U} ? U : never
-export type InferActionsTypes<T extends {[key: string]: (...args: any[])=> any}> = ReturnType<PropertyTypes<T>>
+type PropertyTypes<T> = T extends { [key: string]: infer U } ? U : never
+export type InferActionsTypes<T extends { [key: string]: (...args: any[]) => any }> = ReturnType<PropertyTypes<T>>
 
 declare global {
   interface Window {
@@ -33,8 +33,8 @@ declare global {
 export type RootStateType = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;
 const store = configureStore({
-   reducer,
-   middleware: [...middleware],
+  reducer,
+  middleware: [...middleware],
 });
 const persistor = persistStore(store);
 sagaMiddleware.run(rootSaga);

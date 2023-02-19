@@ -1,10 +1,12 @@
 import moment from 'moment';
+import { Dispatch } from 'redux';
+import { AnyAction } from '@reduxjs/toolkit';
 
-import { InferActionsTypes } from './index';
+import { InferActionsTypes, RootStateType } from './index';
 
 import { authActions } from '../globals/auth/actions';
 
-const jwtRefreshMiddleware = ({ dispatch, getState }) => {
+const jwtRefreshMiddleware = ({ dispatch, getState} : { getState: () => RootStateType, dispatch: Dispatch<AnyAction>  }) => {
     return (next: (action: InferActionsTypes<any>) => void) =>
         (action: InferActionsTypes<any>) => {
             if (![

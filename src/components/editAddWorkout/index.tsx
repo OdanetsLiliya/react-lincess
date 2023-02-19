@@ -114,12 +114,12 @@ const EditAddWorkout = ({
     useEffect(() => {
         if (isEdit) {
             if (equipmentOptions && Object.keys(detailedWorkout).length) {
-                const equipmentDict = {};
+                const equipmentDict = {} as DictType;
                 equipmentOptions.forEach((eq: FilterType) => {
-                    if (detailedWorkout.equipments.find((oldEq: number) => oldEq === eq.value)) {
-                        equipmentDict[eq.value] = true
+                    if (detailedWorkout?.equipments?.find((oldEq: number) => oldEq === eq.value)) {
+                        equipmentDict[`${eq.value}`] = true
                     } else {
-                        equipmentDict[eq.value] = false
+                        equipmentDict[`${eq.value}`] = false
                     }
                 })
                 setValue('equipment', equipmentDict);
@@ -130,7 +130,7 @@ const EditAddWorkout = ({
     }, [equipmentOptions, detailedWorkout])
 
     return (
-        <div className={`${isEdit ? 'editWorkoutContainer' : '' } editAddWorkoutContainer`}>
+        <div className={`${isEdit ? 'editWorkoutContainer' : ''} editAddWorkoutContainer`}>
             {isEdit ? <div className='playerEditContainer'>
                 <Player detailedWorkout={detailedWorkout} isSmall={true} />
             </div> : <></>}

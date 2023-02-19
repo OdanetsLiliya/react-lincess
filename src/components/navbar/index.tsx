@@ -19,8 +19,8 @@ import { DeviceSize } from "../../assets/responsive";
 import './styles.scss';
 
 export interface NavbarPropsType
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  isNavbarRendering: boolean;
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    isNavbarRendering: boolean;
 }
 
 const NavBar: React.FC<NavbarPropsType> = ({ isNavbarRendering }) => {
@@ -28,10 +28,10 @@ const NavBar: React.FC<NavbarPropsType> = ({ isNavbarRendering }) => {
     const dispatch = useDispatch();
     const isMobile = useMediaQuery({ maxWidth: DeviceSize.mobile });
 
-    const user = useSelector((state : RootStateType) => state.auth?.user);
+    const user = useSelector((state: RootStateType) => state.auth?.user);
 
     const onClick = () => {
-        if (user.id){
+        if (user.id) {
             dispatch(authActions.logOut({ id: user.id }));
         } else {
             history('/login');
@@ -40,22 +40,22 @@ const NavBar: React.FC<NavbarPropsType> = ({ isNavbarRendering }) => {
 
     return isNavbarRendering ? (
         <div className="fixedHeader">
-         <div className="navBarContainer">
-            <div className="leftSection">
-                <Logo />
+            <div className="navBarContainer">
+                <div className="leftSection">
+                    <Logo />
+                </div>
+                <div className="middleSection">
+                    {!isMobile && <NavLinks role={user.role} />}
+                </div>
+                <div className="rightSection">
+                    {!isMobile && <DefaultButton
+                        title={user?.id ? `Logout` : `Login`}
+                        onClick={onClick}
+                    />}
+                    {isMobile && <MobileNavLinks role={user.role} onClick={onClick} />}
+                </div>
             </div>
-            <div className="middleSection">
-                {!isMobile && <NavLinks role={user.role} />}
-            </div>
-            <div className="rightSection">
-                {!isMobile && <DefaultButton
-                    title={user?.id ? `Logout` : `Login`}
-                    onClick={onClick}
-                />}
-                {isMobile && <MobileNavLinks role={user.role} onClick={onClick} />}
-            </div>
-        </div>
-        <BreadCrumbs />
+            <BreadCrumbs />
         </div>
     ) : <></>
 }

@@ -17,8 +17,8 @@ const lilac = 'rgba(199,147,235,1)';
 
 export interface MenuTogglePropsType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    toggle: () => void,
-    isOpen: boolean
+  toggle: () => void,
+  isOpen: boolean
 }
 
 const MenuToggle: React.FC<MenuTogglePropsType> = ({ toggle, isOpen }) => {

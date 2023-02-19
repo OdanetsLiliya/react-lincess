@@ -1,39 +1,38 @@
+.controlsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  background-color: transparent;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -45%);
+}
 
-  .controlsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    background-color: transparent;
-    position: absolute;
-    top: 45%; 
-    left: 50%;
-    transform: translate(-50%, -45%); 
-  }
-  
-  .controls {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    margin: auto;
-  }
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: auto;
+}
 
+.playControlsIcon {
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  filter: drop-shadow(0px 3px 3px var(--icons-shadow));
+}
+
+@media (max-width: 600px) {
   .playControlsIcon {
-    width: 64px;
-    height: 64px;
-    cursor: pointer;
-    filter: drop-shadow(0px 3px 3px var(--icons-shadow));
+    width: 60px;
+    height: 60px;
   }
-
-  @media(max-width: 600px) {
-    .playControlsIcon {
-      width: 60px;
-      height: 60px;
-    }
-    .controlsContainer {
-      top: 50%; 
-      left: 50%;
-      transform: translate(-50%, -50%); 
-    }
+  .controlsContainer {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+}

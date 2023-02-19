@@ -10,8 +10,8 @@ const AdministrationPage: React.FC = () => {
 
     return <div className='administrationContainer'>
         <DefaultButton
-           title="Добавить тренировку"
-           onClick={() => history('/administration/add-workout')}
+            title="Добавить тренировку"
+            onClick={() => history('/administration/add-workout')}
         />
     </div>
 };

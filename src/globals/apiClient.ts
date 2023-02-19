@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-const apiClient = (token : string) => {
+const apiClient = (token: string) => {
     const instance = axios.create()
     instance.interceptors.request.use(async (request) => {
         if (token && request.headers) {
-            request.headers.common?.set('Authorization',`Bearer ${token}`)
+            request.headers.common?.set('Authorization', `Bearer ${token}`)
         }
         return request
     })

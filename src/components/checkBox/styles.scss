@@ -10,28 +10,28 @@
 	-moz-user-select: none;
 	-ms-user-select: none;
 	user-select: none;
-  }
+}
 
-  .checkBoxLabel {
+.checkBoxLabel {
 	height: 25px;
 	font-family: "Gill Sans", sans-serif;
-    font-size: 14px;
+	font-size: 14px;
 	color: var(--white);
 	display: flex;
 	align-items: center;
-  }
-  
-  /* Hide the browser's default checkbox */
-  .checkBoxContainer input {
+}
+
+/* Hide the browser's default checkbox */
+.checkBoxContainer input {
 	position: absolute;
 	opacity: 0;
 	cursor: pointer;
 	height: 0;
 	width: 0;
-  }
-  
-  /* Create a custom checkbox */
-  .checkmark {
+}
+
+/* Create a custom checkbox */
+.checkmark {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -39,32 +39,32 @@
 	width: 25px;
 	border-radius: 8px;
 	background-color: var(--light-gray);
-  }
-  
-  /* On mouse-over, add a grey background color */
-  .checkBoxContainer:hover input ~ .checkmark {
+}
+
+/* On mouse-over, add a grey background color */
+.checkBoxContainer:hover input ~ .checkmark {
 	background-color: var(--white);
-  }
-  
-  /* When the checkbox is checked, add a blue background */
-  .checkBoxContainer input:checked ~ .checkmark {
+}
+
+/* When the checkbox is checked, add a blue background */
+.checkBoxContainer input:checked ~ .checkmark {
 	background-color: var(--lilac);
-  }
-  
-  /* Create the checkmark/indicator (hidden when not checked) */
-  .checkmark:after {
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
 	content: "";
 	position: absolute;
 	display: none;
-  }
-  
-  /* Show the checkmark when checked */
-  .checkBoxContainer input:checked ~ .checkmark:after {
+}
+
+/* Show the checkmark when checked */
+.checkBoxContainer input:checked ~ .checkmark:after {
 	display: block;
-  }
-  
-  /* Style the checkmark/indicator */
-  .checkBoxContainer .checkmark:after {
+}
+
+/* Style the checkmark/indicator */
+.checkBoxContainer .checkmark:after {
 	left: 9px;
 	top: 5px;
 	width: 5px;
@@ -74,4 +74,4 @@
 	-webkit-transform: rotate(45deg);
 	-ms-transform: rotate(45deg);
 	transform: rotate(45deg);
-  }
+}

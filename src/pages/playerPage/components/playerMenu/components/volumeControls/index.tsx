@@ -38,7 +38,7 @@ const VolumeControls = forwardRef(({ updateVolume }: VolumeControlsPropsType, re
         soundProgressBarRef?.current?.setInputValue(volume * 100);
     }
 
-    const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const onMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent> | MouseEvent) => {
         if (soundProgressBarRef?.current?.getIsDrag()) {
             const offsetPercent = Dom.getPointerPosition(volumeControlRef?.current, e).x * 100;
             const volume = Number((offsetPercent / 100).toFixed(1))

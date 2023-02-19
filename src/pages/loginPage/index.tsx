@@ -23,29 +23,29 @@ import './styles.scss';
 
 const LoginPage: React.FC = () => {
     const { register, handleSubmit, formState: { isValid, errors } } = useForm({
-      resolver: yupResolver(objectValidationShema),
-      mode: 'onChange'
+        resolver: yupResolver(objectValidationShema),
+        mode: 'onChange'
     });
     const dispatch = useDispatch();
     const [showPassword, setShowPassword] = useState(false);
     const history = useNavigate();
-    const user = useSelector((state : RootStateType) => state.auth?.user);
+    const user = useSelector((state: RootStateType) => state.auth?.user);
 
     const onSubmit = (data: FieldValues) => {
-        dispatch(authActions.logIn(({ ...data}) as UserSignUpType));
+        dispatch(authActions.logIn(({ ...data }) as UserSignUpType));
     }
 
     useEffect(() => {
-      if (user?.id) {
-        history('/coaches-list');
-      }
-  }, [history, user?.id])
+        if (user?.id) {
+            history('/coaches-list');
+        }
+    }, [history, user?.id])
 
     return (
         <div className="loginContainer">
             <div className="loginForm">
                 <div className="loginLogo">
-                    <img src={Logo} alt="" className="loginLogoImage"/>
+                    <img src={Logo} alt="" className="loginLogoImage" />
                 </div>
                 <div className="loginLittleText">Private authentication</div>
                 <div className="loginTitle">Welcome back to your Lincess Account</div>

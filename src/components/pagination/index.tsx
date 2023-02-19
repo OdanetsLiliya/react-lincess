@@ -15,26 +15,26 @@ export interface PaginationPropsType
 const Pagination: React.FC<PaginationPropsType> = ({ handlePageClick, pageCount, forcePage }) => {
   return (
     pageCount === 1 ? <></> : <ReactPaginate
-        breakLabel="..."
-        nextLabel=">"
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={1}
-        marginPagesDisplayed={1}
-        pageCount={pageCount}
-        previousLabel="<"
-        containerClassName="paginationCustom"
-        activeClassName="activePagItem"
-        pageClassName="paginationPageItem"
-        pageLinkClassName="paginationPageLink"
-        previousClassName="paginationPageItem"
-        previousLinkClassName="paginationPageLink"
-        nextClassName="paginationPageItem"
-        nextLinkClassName="paginationPageLink"
-        breakClassName="paginationPageItem"
-        breakLinkClassName="paginationPageLink"
-        forcePage={forcePage}
-        // renderOnZeroPageCount={() => {}}
-      />
+      breakLabel="..."
+      nextLabel=">"
+      onPageChange={handlePageClick}
+      pageRangeDisplayed={1}
+      marginPagesDisplayed={1}
+      pageCount={pageCount}
+      previousLabel="<"
+      containerClassName="paginationCustom"
+      activeClassName="activePagItem"
+      pageClassName="paginationPageItem"
+      pageLinkClassName="paginationPageLink"
+      previousClassName="paginationPageItem"
+      previousLinkClassName="paginationPageLink"
+      nextClassName="paginationPageItem"
+      nextLinkClassName="paginationPageLink"
+      breakClassName="paginationPageItem"
+      breakLinkClassName="paginationPageLink"
+      forcePage={forcePage}
+    // renderOnZeroPageCount={() => {}}
+    />
   )
 };
 

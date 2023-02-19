@@ -5,10 +5,10 @@ import { ActionTypes } from './actions';
 import { FilterType, SelectedFiltersType } from '../../types/filterTypes';
 
 export type InitialStateType = {
-  coaches: Array<FilterType>,
-  workoutLevels: Array<FilterType>,
-  equipment: Array<FilterType>,
-  workoutTypes: Array<FilterType>,
+  coaches: FilterType[] | [],
+  workoutLevels: FilterType[] | [],
+  equipment: FilterType[] | [],
+  workoutTypes: FilterType[] | [],
   selectedFilters: SelectedFiltersType
 };
 
@@ -23,7 +23,7 @@ const initialState = {
     workoutTypes: {},
     page: 0,
     take: 12
-  }
+  } as SelectedFiltersType
 };
 
 const filterReducer = (
@@ -34,22 +34,22 @@ const filterReducer = (
     case filterConstants.GET_COACHES_FILTER_SUCCESS:
       return {
         ...state,
-        coaches: action.payload,
+        coaches: action.payload as FilterType[],
       };
     case filterConstants.GET_EQUIPMENT_SUCCESS:
       return {
         ...state,
-        equipment: action.payload
+        equipment: action.payload as FilterType[]
       };
     case filterConstants.GET_WORKOUT_LEVELS_SUCCESS:
       return {
         ...state,
-        workoutLevels: action.payload
+        workoutLevels: action.payload as FilterType[]
       };
     case filterConstants.GET_WORKOUT_TYPES_FILTER_SUCCESS:
       return {
         ...state,
-        workoutTypes: action.payload
+        workoutTypes: action.payload as FilterType[]
       };
     case filterConstants.SELECT_FILTERS:
       return {

@@ -21,7 +21,7 @@ const PlayerPage: React.FC = () => {
         }
     }, [dispatch, params])
 
-    return <Player detailedWorkout={detailedWorkout}/>;
+    return <Player detailedWorkout={detailedWorkout} />;
 };
 
 export default PlayerPage;

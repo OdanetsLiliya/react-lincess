@@ -32,23 +32,23 @@ const appReducer = (
       return {
         ...state,
         loading: false,
-    };
+      };
     case appConstants.SET_MESSAGE:
       return {
         ...state,
         isShowMessage: action.payload.isShowMessage,
         message: action.payload.message,
-    };
+      };
     case appConstants.SET_REFRESHING:
       return {
         ...state,
         refreshing: action.payload,
-    };
+      };
     case appConstants.SET_ROUTE:
       return {
         ...state,
         route: action.payload,
-    };
+      };
     default:
       return state;
   }

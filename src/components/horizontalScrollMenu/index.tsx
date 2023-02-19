@@ -13,63 +13,67 @@ export interface HorizontalScrollPropsType
 }
 
 const HorizontalScrollMenu: React.FC<HorizontalScrollPropsType> = ({ CardItem, data, setData }) => {
-  const [selected, setSelected] = React.useState([]);
+  const [selected, setSelected] = React.useState<number[]>([]);
 
-  const isItemSelected = (id) => !!selected.find((el) => el === id);
+  const isItemSelected = (id: number) => !!selected.find((el) => el === id);
 
   const handleClick =
-    (id) =>
-    ({ getItemById, scrollToItem }) => {
-      const itemSelected = isItemSelected(id);
-
-      setSelected((currentSelected) =>
-        itemSelected
-          ? currentSelected.filter((el) => el !== id)
-          : currentSelected.concat(id)
-      );
-  };
+    (id: number) =>
+      (/* { getItemById, scrollToItem } */) => {
+        const itemSelected = isItemSelected(id);
+        setSelected((currentSelected: number[]) =>
+          itemSelected
+            ? currentSelected.filter((el) => el !== id)
+            : currentSelected.concat(id)
+        );
+      };
 
   function LeftArrow() {
     const { isFirstItemVisible, scrollPrev } =
       React.useContext(VisibilityContext);
-  
+
     return (
       <Arrow disabled={isFirstItemVisible} onClick={() => scrollPrev()} left={true}>
       </Arrow>
     );
   }
-  
+
   function RightArrow() {
     const { isLastItemVisible, scrollNext } = React.useContext(VisibilityContext);
-  
+
     return (
       <Arrow disabled={isLastItemVisible} onClick={() => scrollNext()}>
       </Arrow>
     );
   }
 
-  function Card({ onClick, selected, item, itemId }) {
+  function Card({ onClick, selected, item, itemId }: {
+    onClick: () => void,
+    selected: boolean,
+    item: any,
+    itemId: number
+  }) {
     const visibility = React.useContext(VisibilityContext);
     return (
       <CardItem
-      visibility={visibility}
-      selected={selected}
-      itemId={itemId}
-      item={item}
-      onClick={onClick}
+        visibility={visibility}
+        selected={selected}
+        itemId={itemId}
+        item={item}
+        onClick={onClick}
       />
     );
   }
 
   return (
     <ScrollMenu
-    LeftArrow={LeftArrow}
-    RightArrow={RightArrow}
-    itemClassName="item"
-    separatorClassName="separator"
-    scrollContainerClassName="scrollContainer"
+      LeftArrow={LeftArrow}
+      RightArrow={RightArrow}
+      itemClassName="item"
+      separatorClassName="separator"
+      scrollContainerClassName="scrollContainer"
     >
-      {data.map((item, idx) => (
+      {data.map((item: any, idx: number) => (
         <Card
           itemId={idx} // NOTE: itemId is required for track items
           item={item}

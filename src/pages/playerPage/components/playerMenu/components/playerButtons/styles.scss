@@ -24,16 +24,16 @@
 }
 
 .controlsIcon {
-    width: 28px;
-    height: 28px;
-    cursor: pointer;
-    margin-left: 2px;
-    margin-right: 2px;
-    align-items: center;
-    justify-content: center;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  margin-left: 2px;
+  margin-right: 2px;
+  align-items: center;
+  justify-content: center;
 }
 
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .leftButtonsControl {
     display: none;
   }
@@ -42,5 +42,3 @@
     height: 24px;
   }
 }
-  
- 

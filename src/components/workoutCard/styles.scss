@@ -14,14 +14,14 @@
     text-overflow: ellipsis;
     display: flex;
     -webkit-line-clamp: 4; /* number of lines to show */
-            line-clamp: 4; 
+    line-clamp: 4;
     -webkit-box-orient: vertical;
     padding: 8px;
     z-index: 4;
 }
 
 .defaultTitleContainer {
-    background: linear-gradient(rgba(0,0,0,.5), transparent);
+    background: linear-gradient(rgba(0, 0, 0, 0.5), transparent);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     justify-content: space-between;
@@ -45,7 +45,7 @@
 
 .defaultDescriptionContainer {
     text-align: start;
-    background: linear-gradient(transparent,rgba(0,0,0,.75));
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }

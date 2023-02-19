@@ -8,13 +8,13 @@ import {
 } from '../../types/authTypes';
 
 export type InitialStateType = {
-  user: UserType | {};
-  tokens: TokensType | {};
+  user: UserType;
+  tokens: TokensType;
 };
 
 const initialState = {
-  user: {},
-  tokens: {}
+  user: {} as UserType,
+  tokens: {} as TokensType
 };
 
 const authReducer = (

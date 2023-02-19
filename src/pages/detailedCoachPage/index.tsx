@@ -73,7 +73,7 @@ const DetailedСoach = () => {
       />
       <Workouts
         isAvailiable={(query?.tab || INITIAL_ACTIVE_KEY) === SEC_ACTIVE_KEY}
-        coachID={detailedCoach.id}
+      // coachID={detailedCoach.id}
       />
       <Details
         isAvailiable={(query?.tab || INITIAL_ACTIVE_KEY) === THIRD_ACTIVE_KEY}

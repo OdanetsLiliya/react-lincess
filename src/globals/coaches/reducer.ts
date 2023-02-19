@@ -6,15 +6,15 @@ import { CoachType, CoachesType } from '../../types/coachesTypes';
 
 export type InitialStateType = {
   coaches: CoachesType,
-  detailedCoach: CoachType | {};
+  detailedCoach: CoachType;
 };
 
 const initialState = {
   coaches: {
-    items: [],
+    items: [] as Array<CoachType>,
     count: 0
   },
-  detailedCoach: {}
+  detailedCoach: {} as CoachType
 };
 
 const coachReducer = (
@@ -25,12 +25,12 @@ const coachReducer = (
     case coachConstants.GET_COACHES_LIST_SUCCESS:
       return {
         ...state,
-        coaches: action.payload,
+        coaches: action.payload as CoachesType,
       };
     case coachConstants.GET_DETAILED_COACH_SUCCESS:
       return {
         ...state,
-        detailedCoach: action.payload
+        detailedCoach: action.payload as CoachType
       };
     default:
       return state;

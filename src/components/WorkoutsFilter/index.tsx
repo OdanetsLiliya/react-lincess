@@ -49,7 +49,7 @@ const WorkoutsFilter: React.FC<WorkoutsFilterPropsType> = ({
   ) => {
     setFilters({
       ...filters,
-      [id]: value
+      [`${id}`]: value
     })
   }
 

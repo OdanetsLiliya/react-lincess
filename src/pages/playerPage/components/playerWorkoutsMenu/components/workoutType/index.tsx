@@ -9,7 +9,7 @@ import './styles.scss';
 export interface WorkoutTypesPropsType
     extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     workoutTypes: Array<WorkoutType>,
-    setWorkoutTypes:(value: Array<WorkoutType>) => void,
+    setWorkoutTypes: (value: Array<WorkoutType>) => void,
     init_workout_types: Array<WorkoutType>,
     changeWorkoutTypesVisibility: (value: boolean) => void,
     setWorkoutType: (value: WorkoutType) => void,
@@ -32,31 +32,31 @@ const WorkoutTypes: React.FC<WorkoutTypesPropsType> = ({
         }, 1500);
     };
 
-    const goToWorkouts = (item) => {
+    const goToWorkouts = (item: WorkoutType) => {
         setWorkoutType(item);
         changeWorkoutTypesVisibility(false);
     }
 
     return (
         <InfiniteScroll
-          dataLength={workoutTypes.length}
-          next={fetchMoreData}
-          hasMore={true}
-          loader={<h4>Loading...</h4>}
+            dataLength={workoutTypes.length}
+            next={fetchMoreData}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
         >
-          {workoutTypes.map((item, index) => (
-            <div
-            key={index}
-            className={classNames("workoutTypeContainer", {
-                activeWorkoutType: item.id === workoutType.id
-            })}
-            onClick={() => goToWorkouts(item)}
-            >
-               <div className="workoutTypeTitle">
-               {item.title}
-               </div>
-            </div>
-          ))}
+            {workoutTypes.map((item, index) => (
+                <div
+                    key={index}
+                    className={classNames("workoutTypeContainer", {
+                        activeWorkoutType: item.id === workoutType.id
+                    })}
+                    onClick={() => goToWorkouts(item)}
+                >
+                    <div className="workoutTypeTitle">
+                        {item.title}
+                    </div>
+                </div>
+            ))}
         </InfiniteScroll>
     );
 };

@@ -1,7 +1,6 @@
 $initialMargin: 24px;
 $animatedMargin: 15%;
 
-
 .coachTitle {
   font-weight: 900;
   font-size: 42px;
@@ -45,10 +44,9 @@ $animatedMargin: 15%;
 
 @media (max-width: 800px) {
   .titleMenu {
-   margin-top: $initialMargin;
+    margin-top: $initialMargin;
     animation: none;
   }
-
 }
 
 @keyframes titleMenuAnimation {

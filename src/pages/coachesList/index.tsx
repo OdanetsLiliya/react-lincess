@@ -5,17 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import CoachCard from './components/coachCard';
 
 import coachImg1 from '../../assets/images/jetasveta.jpg';
-import coachImg2 from '../../assets/images/tgym.jpg';
-import coachImg3 from '../../assets/images/tanya_yourfit.jpg';
-import coachImg4 from '../../assets/images/ssfit.jpg';
-import coachImg5 from '../../assets/images/delaitelo.jpg';
 
 import { coachesActions } from '../../globals/coaches/actions';
 
 import { RootStateType } from '../../stores';
 
 import './styles.scss';
-
 
 const CoachesList = () => {
   const dispatch = useDispatch();

@@ -25,8 +25,8 @@ export function* getAllFilterData(payload: {
       call(filtersApi.getWorkoutLevelsList, accessToken),
       call(filtersApi.getWorkoutTypes, accessToken),
     ])
-    
-    yield put(filterActions.getCoachesSuccess(getFilterArray(coaches)));
+
+    yield put(filterActions.getCoachesSuccess(getFilterArray(coaches.items)));
     yield put(filterActions.getEquipmentSuccess(getFilterArray(equipment)));
     yield put(filterActions.getWorkoutLevelsSuccess(getFilterArray(workoutLevels)));
     yield put(filterActions.getWorkoutTypesSuccess(getFilterArray(types)));

@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 import ErrorPage from '../../../../pages/ErrorPage';
 
-const RequireAdmin = ({ Component, userRole }) => {
+const RequireAdmin = ({ Component, userRole } : {userRole: string, Component: any}) => {
     if (!userRole) {
         return <Navigate to="/login" replace />;
     }

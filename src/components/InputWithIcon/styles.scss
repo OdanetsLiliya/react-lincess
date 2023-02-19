@@ -45,14 +45,13 @@
 }
 
 .inputWithIcon:-webkit-autofill,
-.inputWithIcon:-webkit-autofill:hover, 
-.inputWithIcon:-webkit-autofill:focus, 
+.inputWithIcon:-webkit-autofill:hover,
+.inputWithIcon:-webkit-autofill:focus,
 .inputWithIcon:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px var(--gray) inset !important;
+	-webkit-box-shadow: 0 0 0 30px var(--gray) inset !important;
 	box-shadow: 0 0 0 30px var(--gray) inset !important;
 	-webkit-text-fill-color: var(--white) !important;
 }
-
 
 .textAreaWithIcon {
 	padding: 9px 16px;
@@ -65,7 +64,7 @@
 	border-radius: 5px;
 	box-sizing: border-box;
 	&::placeholder {
-	  color: var(--white);
+		color: var(--white);
 	}
 	resize: none;
 }
@@ -79,7 +78,7 @@ input:focus {
 textarea:focus {
 	outline: none !important;
 	box-shadow: none !important;
-	border: 2px solid #008F8F !important;
+	border: 2px solid #008f8f !important;
 	overflow: auto !important;
 }
 
@@ -89,7 +88,7 @@ textarea:focus {
 
 .inputWithIconTitle {
 	font-family: "Gill Sans", sans-serif;
-    font-size: 14px;
+	font-size: 14px;
 	color: var(--white);
 	line-height: 26px;
 	margin-top: 10px;
@@ -100,7 +99,7 @@ textarea:focus {
 
 .inpuErrorTitle {
 	font-family: "Gill Sans", sans-serif;
-    font-size: 14px;
+	font-size: 14px;
 	color: var(--error);
 	text-align: right;
 	// to fix input jumps
@@ -110,13 +109,13 @@ textarea:focus {
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
-  margin: 0;
+	-webkit-appearance: none;
+	appearance: none;
+	margin: 0;
 }
 
 /* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
-  appearance: textfield;
+input[type="number"] {
+	-moz-appearance: textfield;
+	appearance: textfield;
 }

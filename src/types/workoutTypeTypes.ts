@@ -1,4 +1,4 @@
 export type WorkoutType = {
-    id:  string | number,
+    id: string | number,
     title: string,
 };

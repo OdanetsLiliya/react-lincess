@@ -1,7 +1,8 @@
 export type UserType = {
-    id: number | string;
+    id: number;
     username: string | null;
     email: string;
+    role: string;
 };
 
 export type UserSignUpType = {
@@ -12,10 +13,11 @@ export type UserSignUpType = {
 };
 
 export type UserSignUpResponseType = {
-    id: number | string;
+    id: number;
     username: string | null;
     email: string;
     password: string | null;
+    role: string;
 };
 
 export type TokensType = {

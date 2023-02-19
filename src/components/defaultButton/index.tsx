@@ -2,14 +2,13 @@ import React, { HTMLAttributes, DetailedHTMLProps } from 'react';
 import classNames from "classnames";
 
 import './styles.scss';
-
 export interface ButtonPropsType
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  title: string;
-  onClick?: () => void;
-  isDark?: boolean;
-  isActive?: boolean;
-  style?: React.CSSProperties
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    title: string;
+    onClick?: () => void;
+    isDark?: boolean;
+    isActive?: boolean;
+    style?: React.CSSProperties
 }
 
 const DefaultButton: React.FC<ButtonPropsType> = ({

@@ -1,9 +1,9 @@
 export type CoachType = {
-    id: number | string;
+    id: number;
     title: string;
     image_url: string;
-    about: string | null;
-    details: string | null;
+    about: string;
+    details: string;
 };
 
 export type CoachesType = {

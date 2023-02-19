@@ -5,7 +5,7 @@ import DefaultButton from '../../components/defaultButton';
 
 import './styles.scss';
 export interface ErrorPagePropsType
-  extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
+    extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
     description: string;
 }
 
@@ -20,8 +20,8 @@ const ErrorPage: React.FC<ErrorPagePropsType> = ({ description }) => {
             <div className='permissionsDeniedTitle'>Ошибка</div>
             <div className='permissionsDeniedDescr'>{description}</div>
             <DefaultButton
-               title='Назад'
-               onClick={onClick}
+                title='Назад'
+                onClick={onClick}
             />
         </div>
     </div>;

@@ -9,7 +9,6 @@ export interface CheckBoxPropsType
 	setValue: (value: boolean) => void;
 }
 
-
 const CheckBox: React.FC<CheckBoxPropsType> = ({
 	label,
 	value,
@@ -19,9 +18,9 @@ const CheckBox: React.FC<CheckBoxPropsType> = ({
 		<label className="checkBoxContainer">
 			<div className="checkBoxLabel">{label}</div>
 			<input
-			type="checkbox"
-			checked={value}
-			onChange={() => setValue(!value)}
+				type="checkbox"
+				checked={value}
+				onChange={() => setValue(!value)}
 			/>
 			<span className="checkmark"></span>
 		</label>

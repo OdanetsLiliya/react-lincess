@@ -6,12 +6,12 @@ import './styles.scss';
 
 export interface ArrowPropsType
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-    disabled: boolean;
-    onClick: () => void;
-    left?: boolean
+  disabled: boolean;
+  onClick: () => void;
+  left?: boolean
 }
 
-const Arrow : React.FC<ArrowPropsType> =  ({
+const Arrow: React.FC<ArrowPropsType> = ({
   disabled, onClick, left
 }) => (
   <div onClick={onClick} className="arrowContainer">
