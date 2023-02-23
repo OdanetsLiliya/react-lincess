@@ -14,10 +14,11 @@ import './styles.scss';
 
 const CoachesList = () => {
   const dispatch = useDispatch();
-  const { items = [], count = 0 } = useSelector((state: RootStateType) => state.coach?.coaches);
+  const { items = [] } = useSelector((state: RootStateType) => state.coach?.coaches);
 
   useEffect(() => {
     dispatch(coachesActions.getCoachesList({}))
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchData = () => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import classNames from "classnames";
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from "react-router-dom";
@@ -42,7 +42,7 @@ const DetailedСoach = () => {
   const dispatch = useDispatch();
   const params = useParams();
 
-  let [query, setQuery] = useQueryParams({
+  let [query] = useQueryParams({
     tab: StringParam
   });
 
@@ -52,6 +52,7 @@ const DetailedСoach = () => {
     if (params.id) {
       dispatch(coachesActions.getCoachDetailed({ id: params.id }))
     }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
 
