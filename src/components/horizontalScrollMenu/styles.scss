@@ -1,0 +1,24 @@
+
+.item {
+   // background-color: lightpink;
+
+}
+
+.separator {
+    background-color: green;
+}
+
+.scrollContainer {
+    width: calc(100vw - 80px);
+    // margin: 32px 0px;
+    border-radius: 8px;
+}
+
+.react-horizontal-scrolling-menu--scroll-container::-webkit-scrollbar {
+    display: none;
+}
+  
+.react-horizontal-scrolling-menu--scroll-container {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+} 

@@ -1,17 +1,18 @@
-.navBarContainer {
-    // width: 100%;
-    height: 60px;
-    box-shadow: 0 1px 3px rgba(27, 97, 128, 0.5);
-    display: flex;
-    align-items: center;
-    padding: 0 1.5em;
-    // background-color: rgba(186, 85, 54, 0.95);
-    background-color: rgba(0, 141, 203, 0.9);
+.fixedHeader {
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
-    z-index: 9999;
+    z-index: 9998;
+}
+
+.navBarContainer {
+    height: var(--navbar-height);
+    box-shadow: 0px 1px 0px var(--light-lilac);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5em;
+    background-color: var(--gray);
 }
 
 .leftSection {

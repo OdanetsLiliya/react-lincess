@@ -1,0 +1,20 @@
+.timeControlsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.timeDel {
+  color: white;
+}
+
+.controlsTime {
+  text-shadow: -2px 2px 19px var(--gray-shadow);
+  margin: 4px;
+  font-size: 16px;
+  font-family: "Gill Sans", sans-serif;
+  color: #fff;
+  font-weight: 400;
+}

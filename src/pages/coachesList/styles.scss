@@ -1,0 +1,36 @@
+.coachesListContainer {
+  height: calc(100vh - var(--navbar-height));
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.coachesTitle {
+  margin: 32px 0px;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+  color: var(--white);
+}
+
+.coachesContainerGrid {
+  height: calc(100vh - var(--navbar-height) - 64px - 36px - 6px);
+  margin: 0px 16px;
+  overflow: scroll;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  justify-content: space-between;
+  grid-gap: 24px;
+}
+
+@media (max-width: 910px) {
+  .coachesContainerGrid {
+    grid-template-columns: repeat(auto-fill, 250px);
+  }
+}
+
+@media (max-width: 830px) {
+  .coachesContainerGrid {
+    grid-template-columns: repeat(auto-fill, calc(100vw - 48px));
+  }
+}

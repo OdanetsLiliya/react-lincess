@@ -1,0 +1,17 @@
+.workoutMenuHoverContainer {
+    position: absolute;
+    bottom: 32px;
+    right: 40px;
+    z-index: 999;
+}
+
+.workoutMenu {
+    background-color: var(--gray);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    width: 30vw;
+    height: 40vh;
+    margin-bottom: 12px;
+    overflow: auto;
+    min-width: 300px;
+}

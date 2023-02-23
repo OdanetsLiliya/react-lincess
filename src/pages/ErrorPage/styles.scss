@@ -1,0 +1,34 @@
+.permissionsDeniedContainer {
+    height: calc(100vh - var(--navbar-height));
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 12px;
+}
+
+.permissionsDeniedCard {
+    background-color: var(--gray);
+    border-radius: 4px;
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.permissionsDeniedTitle {
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white);
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}
+
+.permissionsDeniedDescr {
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 16px;
+}

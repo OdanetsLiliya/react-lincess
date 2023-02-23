@@ -1,0 +1,25 @@
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-bottom: 48px;
+  animation-name: contentAnimationInit;
+  animation-duration: 0.2s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+  padding: 32px 32px;
+}
+
+.about {
+  text-align: start;
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--white);
+  font-family: "Gill Sans", sans-serif;
+}
+
+.buttonWatch {
+  margin-top: 8px;
+}

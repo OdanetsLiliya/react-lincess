@@ -1,5 +1,8 @@
-.button {
+.navBarButton {
     z-index: 99;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 8px 5px 10px;
 }
-

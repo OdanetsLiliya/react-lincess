@@ -1,0 +1,72 @@
+.topPlayerMenu {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), transparent);
+}
+
+.videoTopText {
+  width: 100%;
+  margin-right: 56px;
+}
+
+.videoTitle {
+  font-size: 32px;
+  font-family: "Gill Sans", sans-serif;
+  color: #fff;
+  font-weight: 400;
+  text-shadow: -2px 2px 19px var(--gray-shadow);
+  margin-top: 32px;
+}
+
+.videoDescr {
+  font-size: 16px;
+  font-family: "Gill Sans", sans-serif;
+  color: #fff;
+  font-weight: 400;
+  text-shadow: -2px 2px 19px var(--gray-shadow);
+  margin-top: 12px;
+}
+
+.closeControlsIcon {
+  width: 32px;
+  height: 32px;
+  margin-left: 24px;
+  margin-top: 24px;
+  cursor: pointer;
+  filter: drop-shadow(0px 3px 3px var(--icons-shadow));
+}
+
+@keyframes FadeAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.animate {
+  animation: FadeAnimation 3s ease-in 0.1s forwards;
+}
+
+@media (max-width: 600px) {
+  .closeControlsIcon {
+    height: 24px;
+    width: 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .videoTitle {
+    font-size: 16px;
+  }
+  .videoDescr {
+    font-size: 14px;
+    font-weight: 300;
+  }
+}

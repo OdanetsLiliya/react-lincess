@@ -1,0 +1,42 @@
+.flashContainer {
+    display: flex;
+    background-color: var(--lilac);
+    position: absolute;
+    top: 16px;
+    left: 60%;
+    right: 16px;
+    z-index: 9999;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 0px 16px;
+    justify-content: space-between;
+    border-radius: 8px;
+}
+
+.flashMessage {
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.flashClose {
+    width: 24px;
+    height: 24px;
+}
+
+.flashContainer-enter {
+    opacity: 0;
+}
+.flashContainer-enter-active {
+    opacity: 1;
+    transition: opacity 200ms;
+}
+.flashContainer-exit {
+    opacity: 1;
+}
+.flashContainer-exit-active {
+    opacity: 0;
+    transition: opacity 200ms;
+}

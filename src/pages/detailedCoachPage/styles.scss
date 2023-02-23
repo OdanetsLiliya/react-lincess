@@ -1,0 +1,22 @@
+$lightGradColorStart: rgba(245, 246, 252, 0.4);
+$lightGradColorFinish: rgba(0, 0, 0, 0.9);
+
+$darkGradColorStart: rgba(245, 246, 252, 0.6);
+$darkGradColorFinish: rgba(0, 0, 0, 0.85);
+
+.coachInfoContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--black);
+  height: calc(100vh - var(--navbar-height));
+  width: 100%;
+  background-image: linear-gradient(to bottom, $lightGradColorStart, $lightGradColorFinish),
+    url("../../assets/images/jetasveta.jpg");
+  background-size: cover;
+  overflow: hidden;
+}
+
+.darkBackground {
+  background-image: linear-gradient(to top, $darkGradColorStart, $darkGradColorFinish 0%),
+    url("../../assets/images/jetasveta.jpg");
+}

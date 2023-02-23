@@ -1,0 +1,13 @@
+.arrowContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.arrowIcon {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    margin-left: 2px;
+    margin-right: 2px;
+}

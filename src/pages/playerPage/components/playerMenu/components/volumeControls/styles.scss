@@ -1,0 +1,35 @@
+.volumeControlsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding-right: 4px;
+  padding-left: 12px;
+}
+
+.volumeControl {
+  width: 0;
+  opacity: 0;
+  transition: 200ms;
+}
+
+.volumeControlHover {
+  width: 80px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: 200ms;
+}
+
+.volumeControlsIcon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  padding-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .volumeControlsIcon {
+    width: 24px;
+    height: 24px;
+  }
+}
