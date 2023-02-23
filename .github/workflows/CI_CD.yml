@@ -13,21 +13,22 @@ jobs:
     env: 
       REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
     steps:
-      - uses: actions/checkout@v2
+      - name: Check out repository code
+        uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install packages
-      - run: npm install
+        run: npm install
       - name: Create .env file
-      - run: echo "$ENV" > .env
+        run: echo "$ENV" > .env
       - name: React build
-      - run: npm run build --if-present
+        run: npm run build --if-present
       - name: Remove old server build folder
-      - run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "rm -rf /root/build"
+        run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "rm -rf /root/build"
       - name: Ubdate servder build folder
-      - uses: garygrossgarten/github-action-scp@release
+        uses: garygrossgarten/github-action-scp@release
         with:
           local: build
           remote: /root/build
@@ -35,4 +36,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           privateKey: ${{ secrets.ID_RSA }}
       - name: Docker compose resstart 
-      - run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "docker-compose kill -s SIGHUP webserver"
+        run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "docker-compose kill -s SIGHUP webserver"
