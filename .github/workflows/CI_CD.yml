@@ -23,6 +23,10 @@ jobs:
         run: npm install
       - name: Create .env file
         run: echo "$ENV" > .env
+      - name: Create key file
+        run: echo "${{ secrets.ID_RSA }}" > .id_rsa
+      - run: chmod og= .id_rsa
+      - run: apk update && apk add openssh-client
       - name: React build
         run: npm run build --if-present
       - name: Remove old server build folder
