@@ -29,6 +29,7 @@ const Message: React.FC = () => {
                 clearTimeout(timeout);
             };
         }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isShowMessage]);
 
     return <CSSTransition

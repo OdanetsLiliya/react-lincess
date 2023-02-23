@@ -89,6 +89,7 @@ const EditAddWorkout = ({
             }
             dispatch(filterActions.getAllFilterData({}));
         }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [dispatch, params])
 
     useEffect(() => {
@@ -109,6 +110,7 @@ const EditAddWorkout = ({
                 trigger();
             }
         }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [detailedWorkout])
 
     useEffect(() => {
@@ -127,6 +129,7 @@ const EditAddWorkout = ({
                 trigger();
             }
         }
+    //eslint-disable-next-line react-hooks/exhaustive-deps
     }, [equipmentOptions, detailedWorkout])
 
     return (

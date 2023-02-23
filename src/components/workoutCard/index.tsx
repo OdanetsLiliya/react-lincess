@@ -45,7 +45,7 @@ const WorkoutCard: React.FC<WorkoutCardType> = ({
       >
         <div className="defaultCardTitle">{workout.title}</div>
         {isEdit ? <div onClick={onEdit}>
-          <img src={Edit} className="iconWorkoutCard" />
+          <img alt="" src={Edit} className="iconWorkoutCard" />
         </div> : <></>}
       </div>
       <div

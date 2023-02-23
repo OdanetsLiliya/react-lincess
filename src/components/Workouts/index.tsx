@@ -97,6 +97,7 @@ const Workouts: React.FC<WorkoutsPropsType> = ({ isAvailiable }) => {
       getWorkoutsList(0);
     }
     dispatch(filterActions.clearFilters(null));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, workoutTypeFilters, equipmentFilters, levelFilters]);
 
 

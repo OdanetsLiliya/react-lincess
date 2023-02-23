@@ -9,7 +9,6 @@ import { appActions } from '../app/actions';
 
 import * as authSelectors from '../auth/selectors';
 import { Workout } from '../../types/workoutTypes';
-import { CoachesType } from '../../types/coachesTypes';
 
 export function* getWorkoutsList(payload: {
   type: string,
