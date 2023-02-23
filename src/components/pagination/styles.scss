@@ -1,0 +1,73 @@
+.paginationCustom {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    justify-content: flex-end;
+}
+
+.paginationPageItem:not(:first-child) .paginationPageLink {
+    margin-left: -1px;
+}
+
+.paginationPageLink {
+    padding: 0.5rem 1rem;
+}
+
+.paginationPageLink {
+    position: relative;
+    display: block;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--white);
+    text-decoration: none;
+    background-color: var(--light-gray);
+    border-radius: 15px;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+        box-shadow 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+.paginationPageItem {
+    margin: 0px 2px;
+}
+
+.paginationPageItem.activePagItem .paginationPageLink {
+    z-index: 3;
+    color: #fff;
+    background-color: var(--lilac);
+    border-color: var(--lilac);
+}
+
+.paginationPageItem.disabled {
+    opacity: 0.2;
+}
+
+.paginationPageLink:focus {
+    z-index: 3;
+    outline: 0;
+    // box-shadow: 0 0 0 0.25rem rgba(13,110,253, 0.25);
+}
+
+.paginationPageLink:hover {
+    z-index: 2;
+    color: var(--white);
+    outline: 0;
+    background-color: var(--lilac);
+}
+
+.paginationPageLink:link {
+    text-decoration: none;
+}
+
+.paginationPageLink:visited {
+    text-decoration: none;
+}
+
+.paginationPageLink:hover {
+    text-decoration: none;
+}
+
+.paginationPageLink:active {
+    text-decoration: none;
+}

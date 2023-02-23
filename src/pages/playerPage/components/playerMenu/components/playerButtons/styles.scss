@@ -1,0 +1,44 @@
+.playControlsContainer {
+  display: flex;
+  height: 100%;
+  flex-direction: row;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.leftControlsContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.leftButtonsControl {
+  display: flex;
+  margin-left: 8px;
+}
+
+.rightControlsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.controlsIcon {
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  margin-left: 2px;
+  margin-right: 2px;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .leftButtonsControl {
+    display: none;
+  }
+  .controlsIcon {
+    width: 24px;
+    height: 24px;
+  }
+}

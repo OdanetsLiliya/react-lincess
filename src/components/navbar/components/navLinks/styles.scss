@@ -1,0 +1,51 @@
+.navLinksContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.linksWrapper {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    list-style: none;
+}
+
+.linkItem {
+    height: 100%;
+    padding: 0 1.1em;
+    font-family: "Gill Sans", sans-serif;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border-top: 2px solid transparent;
+    transition: all 200ms ease-in-out;
+    &:hover {
+        border-top: 2px solid var(--lilac);
+        color: var(--lilac);
+    }
+    cursor: pointer;
+}
+
+.link {
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+}
+
+a.activeLink {
+    text-decoration: none;
+}
+
+a.unactiveLink {
+    text-decoration: none;
+}
+
+a.activeLink .linkItem {
+    border-top: 2px solid var(--lilac);
+    color: var(--lilac);
+}

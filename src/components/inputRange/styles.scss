@@ -1,0 +1,32 @@
+.range {
+  position: relative;
+  height: 16px;
+  /* &:hover {
+    height: 6px;
+  } */
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.active_progress {
+  background-color: var(--lilac);
+  height: 100%;
+}
+
+.active_progress_point {
+  position: absolute;
+  background-color: var(--lilac);
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  top: 2px;
+  z-index: 88;
+}
+
+.progressBar {
+  background-color: var(--light-gray);
+  width: 100%;
+  // height: 100%;
+  height: 5px;
+}

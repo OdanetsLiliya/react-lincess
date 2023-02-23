@@ -1,0 +1,63 @@
+.editAddWorkoutContainer {
+  height: calc(100vh - var(--navbar-breadcrumbs-heigth));
+  display: flex;
+  flex-direction: row;
+  overflow-y: scroll;
+}
+
+.editWorkoutForm {
+  height: 100%;
+  display: flex;
+  flex: 0.5;
+  padding: 12px 32px;
+  flex-direction: column;
+}
+
+.addWorkoutForm {
+  width: 100%;
+  padding: 12px 32px;
+}
+
+.addWorkoutFormInputs {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-column-gap: 24px;
+  grid-row-gap: 12px;
+}
+
+.playerEditContainer {
+  display: flex;
+  flex: 0.5;
+  padding-top: 32px;
+  justify-content: center;
+}
+
+.saveWorkout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.equipmentContainer {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+}
+
+@media (max-width: 450px) {
+  .addWorkoutFormInputs {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+}
+
+// TO DO: add small player for mobile version
+@media (max-width: 1140px) {
+  .editWorkoutContainer {
+    flex-direction: column;
+  }
+  .playerEditContainer {
+    padding: 0px 20px;
+  }
+}

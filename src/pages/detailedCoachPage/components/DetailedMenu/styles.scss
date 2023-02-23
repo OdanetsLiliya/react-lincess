@@ -1,0 +1,68 @@
+$initialMargin: 24px;
+$animatedMargin: 15%;
+
+.coachTitle {
+  font-weight: 900;
+  font-size: 42px;
+  color: var(--white);
+  font-family: "Gill Sans", sans-serif;
+}
+
+.coachMenuContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.buttonMenu {
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.coachTitleMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.animateTitleMenu {
+  margin-top: $initialMargin;
+  animation-name: titleMenuAnimation;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.animateTitleMenuInit {
+  margin-top: $animatedMargin;
+  animation-name: titleMenuAnimationInit;
+  animation-duration: 0.3s;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+@media (max-width: 800px) {
+  .titleMenu {
+    margin-top: $initialMargin;
+    animation: none;
+  }
+}
+
+@keyframes titleMenuAnimation {
+  from {
+    margin-top: $animatedMargin;
+  }
+  to {
+    margin-top: $initialMargin;
+  }
+}
+
+@keyframes titleMenuAnimationInit {
+  from {
+    margin-top: $initialMargin;
+  }
+  to {
+    margin-top: $animatedMargin;
+  }
+}

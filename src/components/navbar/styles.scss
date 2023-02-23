@@ -1,0 +1,31 @@
+.fixedHeader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 9998;
+}
+
+.navBarContainer {
+    height: var(--navbar-height);
+    box-shadow: 0px 1px 0px var(--light-lilac);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5em;
+    background-color: var(--gray);
+}
+
+.leftSection {
+    display: flex;
+}
+
+.middleSection {
+    display: flex;
+    flex: 2;
+    height: 100%;
+    justify-content: center;
+}
+
+.rightSection {
+    display: flex;
+}

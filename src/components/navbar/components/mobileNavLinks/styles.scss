@@ -1,0 +1,50 @@
+.navLinksMobileContainer {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.linksMobileWrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    width: 100%;
+    flex-direction: column;
+    position: fixed;
+    top: calc(var(--navbar-height) + 1px);
+    left: 0;
+    align-items: center;
+    padding-top: 0.5em;
+    background-color: var(--gray);
+    animation: fadeIn 0.2s both linear;
+}
+
+.linkMobileItem {
+    width: 100%;
+    font-family: "Gill Sans", sans-serif;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    display: flex;
+    margin-bottom: 10px;
+    border-bottom: 2px solid var(--gray);
+}
+
+.marginer {
+    height: 0.5em;
+}
+
+a.activeLink .linkMobileItem {
+    border-bottom: 2px solid var(--lilac);
+    color: var(--lilac);
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

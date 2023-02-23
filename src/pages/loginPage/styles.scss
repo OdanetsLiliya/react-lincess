@@ -1,0 +1,90 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+  background-color: var(--black);
+  background-image: url("../../assets/images/logoImage.jpg");
+  background-size: cover;
+}
+
+.loginForm {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 100%;
+  max-width: 440px;
+  padding-left: 32px;
+  padding-right: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.loginLogo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.loginLogoImage {
+  width: 120px;
+  height: 120px;
+}
+
+.loginLittleText {
+  color: var(--white);
+  text-shadow: -2px 2px 19px var(--gray-shadow);
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 22px;
+}
+
+.loginTitle {
+  font-family: "Gill Sans", sans-serif;
+  text-shadow: -2px 2px 19px var(--gray-shadow);
+  color: var(--white);
+  font-size: 16px;
+  line-height: 32px;
+  font-weight: 500;
+  margin-bottom: 34px;
+}
+
+.loginArea {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 16px 0px;
+}
+
+.loginOptionArea {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.loginClickableOptions {
+  color: var(--white);
+  text-shadow: -2px 2px 19px var(--gray-shadow);
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.loginTextOptions {
+  font-family: "Gill Sans", sans-serif;
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media (max-width: 900px) {
+  .loginForm {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,31 @@
+.timeProgressBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 16px;
+}
+
+.visGroup {
+  position: absolute;
+  background-color: transparent;
+  bottom: 20px;
+}
+
+.canvasStyle {
+  border: 2px solid var(--lilac);
+  border-radius: 8px;
+}
+
+.canvasText {
+  color: #fff;
+  font-size: 13px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--lilac);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 400;
+}
