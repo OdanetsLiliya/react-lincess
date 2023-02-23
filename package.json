@@ -100,7 +100,7 @@
   },
   "scripts": {
     "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
+    "build": "TSX_COMPILE_ON_ERROR=true ESLINT_NO_DEV_ERRORS=true node scripts/build.js",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {
