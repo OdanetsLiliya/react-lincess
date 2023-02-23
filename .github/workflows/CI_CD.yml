@@ -6,7 +6,8 @@ on:
     
 jobs:
   reactBuild:
-    runs-on: ubuntu-latest
+    container: alpine:latest
+    runs-on: self-hosted
     strategy:
       matrix:
         node-version: [15.x]
