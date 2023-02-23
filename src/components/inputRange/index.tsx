@@ -1,4 +1,4 @@
-import React, { forwardRef, useState, useImperativeHandle, HTMLAttributes, DetailedHTMLProps, useEffect, MouseEventHandler } from 'react';
+import React, { forwardRef, useState, useImperativeHandle, HTMLAttributes, DetailedHTMLProps, useEffect } from 'react';
 
 import './styles.scss';
 export interface InputRangePropsType
@@ -71,6 +71,7 @@ const InputRange = forwardRef(({
       document.removeEventListener("mousemove", onMouseMoveHandle);
       document.removeEventListener("mouseup", onMouseUp);
     };
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

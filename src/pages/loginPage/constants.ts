@@ -5,6 +5,7 @@ export const objectValidationShema = Yup.object().shape({
         .email('Invalid email address')
         .required('Please enter an email address'),
     password: Yup.string()
+        // eslint-disable-next-line
         .matches(/^[^<>#$@%&*(){}±§`~"\\|/\[\]]*$/)
         .required('Please enter the password')
 })

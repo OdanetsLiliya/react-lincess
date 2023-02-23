@@ -3,7 +3,6 @@ import * as workoutConstants from './constants';
 import { ActionTypes } from './actions';
 
 import { Workout } from '../../types/workoutTypes';
-import { WorkoutType } from '../../types/workoutTypeTypes';
 
 export type InitialStateType = {
   workouts: {

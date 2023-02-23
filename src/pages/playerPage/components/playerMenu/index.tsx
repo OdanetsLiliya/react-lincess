@@ -1,4 +1,4 @@
-import React, { useRef, HTMLAttributes, DetailedHTMLProps, useEffect, MutableRefObject } from 'react';
+import React, { useRef, HTMLAttributes, DetailedHTMLProps, useEffect } from 'react';
 import screenfull from 'screenfull';
 
 import './styles.scss';
