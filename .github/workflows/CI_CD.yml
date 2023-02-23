@@ -35,5 +35,4 @@ jobs:
           username: ${{ secrets.SERVER_USER }}
           privateKey: ${{ secrets.ID_RSA }}
       - name: Docker compose resstart 
-      - run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "docker-compose up -d --no-deps webserver"
-      - run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "echo "y" | docker image prune -a"
+      - run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "docker-compose kill -s SIGHUP webserver"
