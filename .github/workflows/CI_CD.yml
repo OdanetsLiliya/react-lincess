@@ -11,7 +11,7 @@ jobs:
       matrix:
         node-version: [15.x]
     env: 
-      DIGITAL_OCEAN_ACCESS_TOKEN: https://api.lincess.com
+      REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
