@@ -6,8 +6,7 @@ on:
     
 jobs:
   reactBuild:
-    container: alpine:latest
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [15.x]
@@ -27,7 +26,6 @@ jobs:
       - name: Create key file
         run: echo "${{ secrets.ID_RSA }}" > .id_rsa
       - run: chmod og= .id_rsa
-      - run: apk update && apk add openssh-client
       - name: React build
         run: npm run build --if-present
       - name: Remove old server build folder
