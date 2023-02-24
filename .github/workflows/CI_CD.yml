@@ -28,15 +28,20 @@ jobs:
       - run: chmod og= .id_rsa
       - name: React build
         run: npm run build --if-present
-      - name: Remove old server build folder
-        run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "rm -rf /root/build"
-      - name: Ubdate servder build folder
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: build
-          remote: /root/build
-          host: ${{ secrets.SERVER_API }}
-          username: ${{ secrets.SERVER_USER }}
-          privateKey: ${{ secrets.ID_RSA }}
+      # - name: Remove old server build folder
+      #  run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "rm -rf /root/build"
+      #- name: Ubdate servder build folder
+      #  uses: garygrossgarten/github-action-scp@release
+      #  with:
+      #    local: build
+      #    remote: /root/build
+      #    host: ${{ secrets.SERVER_API }}
+      #    username: ${{ secrets.SERVER_USER }}
+      #    privateKey: ${{ secrets.ID_RSA }}
+      - name: Deploy project
+        env:
+          options: ssh -i .id_rsa -o StrictHostKeyChecking=no
+        run: |
+          rsync -e "$options" --archive --delete ./build/ /root/build/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }}
       - name: Docker compose resstart 
         run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "docker-compose kill -s SIGHUP webserver"
