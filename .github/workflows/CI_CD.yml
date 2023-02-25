@@ -42,6 +42,6 @@ jobs:
         env:
           options: ssh -i .id_rsa -o StrictHostKeyChecking=no
         run: |
-          rsync -e "$options" --archive --delete ./build/ /root/build/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }}
+          rsync -e "$options" --archive --delete ./build/ ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }}:${{ secrets.WWW }}
       - name: Docker compose resstart 
         run: ssh -i .id_rsa -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_API }} "docker-compose kill -s SIGHUP webserver"
